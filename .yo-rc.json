@@ -1,0 +1,11 @@
+{
+  "generator-mocha": {},
+  "generator-bangular": {
+    "version": "0.3.3",
+    "filters": {
+      "backend": "mongo",
+      "ngCookies": true,
+      "ngAnimate": true
+    }
+  }
+}
