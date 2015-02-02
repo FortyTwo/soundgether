@@ -1,0 +1,46 @@
+header {
+  background-color: $main-black;
+  .container > ul {
+    @extend .list-inline;
+    margin-bottom: 0;
+    float: left;
+    > li {
+      float: left;
+      height: 80px;
+      > a {
+        display: block;
+      }
+    }
+  }
+}
+
+.header-logo {
+  position: relative;
+  font-size: 36px;
+  line-height: 40px;
+  padding: 18px 10px 22px;
+  span {
+    position: absolute;
+    color: white;
+    font-weight: bold;
+    font-size: 12px;
+    text-transform: uppercase;
+    right: 18px;
+    bottom: 0;
+  }
+}
+
+.header-extra-links {
+  margin-left: 100px !important;
+}
+
+.header-user-links {
+  @extend .pull-right;
+}
+
+.header-item {
+  color: white;
+  font-size: 14px;
+  line-height: 20px;
+  padding: 30px 10px;
+}
