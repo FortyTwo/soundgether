@@ -4,7 +4,7 @@
 
     <base href="/">
 
-    <title>soundgether</title>
+    <title>Soundgether - Collaborative playlists made easy!</title>
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
@@ -23,9 +23,11 @@
   </head>
   <body>
 
-    <strong>soundgether</strong>
+    <!--<header ng-include="'views/components/navbar.html'"></header>-->
 
-    <div ng-view></div>
+    <div ng-view class="main-view"></div>
+
+    <!--<footer ng-include="'views/components/footer.html'"></footer>-->
 
     <!-- build:js app.js -->
       <!-- bower:js -->
@@ -33,6 +35,8 @@
       <script src="bower_components/angular-route/angular-route.js"></script>
       <script src="bower_components/angular-cookies/angular-cookies.js"></script>
       <script src="bower_components/angular-animate/angular-animate.js"></script>
+      <script src="bower_components/jquery/dist/jquery.js"></script>
+      <script src="bower_components/bootstrap-sass/assets/javascripts/bootstrap.js"></script>
       <!-- endinject -->
 
       <!-- inject:js -->

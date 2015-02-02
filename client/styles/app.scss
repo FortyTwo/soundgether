@@ -1,3 +1,30 @@
+
+$brand-primary: #fbc02d;
+$link-color: $brand-primary;
+
+$main-black: #202020;
+$footer-height: 150px;
+
+$input-border-focus: $brand-primary;
+
+@import "../bower_components/bootstrap-sass/assets/stylesheets/bootstrap";
+@import 'navbar';
+@import 'footer';
+@import 'home';
+
+html,
 body {
   font-family: sans-serif;
+  height: 100%;
+}
+
+.main-view {
+  min-height: 100%;
+  margin: 0 auto -$footer-height;
+}
+
+a {
+  &:hover {
+    text-decoration: none;
+  }
 }
