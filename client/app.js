@@ -3,9 +3,10 @@
 angular.module('soundgether', [
   'ngRoute',
   'ngCookies',
-  'ngAnimate'
+  'ngAnimate',
+  'restangular'
 ])
-  .config(function ($routeProvider, $locationProvider) {
+  .config(function ($routeProvider, $locationProvider, RestangularProvider) {
 
     $routeProvider
       .otherwise({
@@ -13,4 +14,5 @@ angular.module('soundgether', [
       });
 
     $locationProvider.html5Mode(true);
+    RestangularProvider.setBaseUrl('http://api.soundcloud.com/');
   });

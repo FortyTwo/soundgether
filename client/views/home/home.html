@@ -18,15 +18,32 @@
     </ul>
   </div>
   <div class="container">
-    <div class="home-centered">
+    <div class="home-centered" ng-class="{'home-centered-top': vm.searchTop || vm.query}">
       <h1 class="home-welcome-text">
-        WELCOME ON <span class="home-welcome-title">SOUNDGETHER</span>
+        WELCOME TO <span class="home-welcome-title">SOUNDGETHER</span>
       </h1>
-      <div class="home-input input-group">
-        <input class="form-control input-xlg" type="text" placeholder="Search for an artist, a track..."/>
-        <span class="input-group-btn">
-          <button class="btn btn-primary home-create-button">Create!</button>
-        </span>
+      <div class="home-search">
+        <div class="home-input">
+          <div class="input-group">
+            <input class="form-control input-xlg" type="text" placeholder="Search for an artist, a track..." ng-focus="vm.searchTop = true" ng-blur="vm.searchTop = false" ng-model-options='{ debounce: 500 }' ng-model="vm.query" ng-change="vm.search(vm.query)"/>
+            <span class="input-group-btn">
+              <button class="btn btn-primary home-create-button">Create!</button>
+            </span>
+          </div>
+          <div class="home-search-results" ng-if="vm.query">
+            <div class="home-search-results-item" ng-repeat="result in vm.results">
+              <div class="home-search-results-item-image">
+                <img ng-src="{{ vm.getArtwork(result, 'small') }}" />
+              </div>
+              <div class="home-search-results-item-title">
+                {{ result.title }}
+              </div>
+              <div class="home-search-results-item-duration">
+                {{ vm.getDuration(result.duration) }}
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>

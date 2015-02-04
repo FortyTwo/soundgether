@@ -6,14 +6,13 @@
   background-size: cover;
   > .container {
     height: 100%;
-    display: table;
   }
 }
 
 .home-menu-links {
   width: 100%;
   position: absolute;
-  background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.4) 90%,rgba(255,255,255,0) 100%);
+  background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.4) 90%,rgba(255, 255, 255, 0) 100%);
   > ul {
     margin-bottom: 0;
     @extend .list-unstyled;
@@ -31,9 +30,15 @@
 }
 
 .home-centered {
-  display: table-cell;
-  vertical-align: middle;
-  height: 100%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  @include transition(all ease 0.5s);
+  transform: translate(-50%, -50%);
+}
+
+.home-centered-top {
+  transform: translate(-50%, -160%);
 }
 
 .home-welcome-text {
@@ -51,7 +56,8 @@
 
 .home-input {
   margin: 0 auto;
-  width: 60%;
+  width: 75%;
+  position: relative;
 }
 
 .input-xlg {
@@ -59,10 +65,61 @@
   padding: 10px 16px;
   font-size: 20px;
   line-height: 1.33333;
-  @include box-shadow(none);
+  box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.3);
+  &:focus {
+    box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.3);
+  }
 }
 
 .home-create-button {
   @extend .input-xlg;
   padding: 10px 25px;
+  box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.3);
+  z-index: 10;
+}
+
+.home-search-results {
+  position: absolute;
+  top: 56px;
+  left: 3px;
+  right: 120px;
+  > .home-search-results-item {
+    @include transition(all ease 0.1s);
+    background-color: #fff;
+    color: $gray-dark;
+    font-size: 18px;
+    box-shadow: 2px 0 1px rgba(0, 0, 0, 0.3);
+    padding: 12px 20px;
+    border-bottom: 1px solid $gray-lighter;
+    &:hover {
+      color: #ffffff;
+      background-color: $gray-dark;
+      border-bottom-color: $gray-dark;
+      cursor: pointer;
+    }
+    &:last-child {
+      border-bottom-left-radius: 5px;
+      border-bottom-right-radius: 5px;
+    }
+    > .home-search-results-item-image {
+      display: inline-block;
+      margin-right: 5px;
+      width: 32px;
+      height: 32px;
+      background-color: $gray-lighter;
+      vertical-align: middle;
+    }
+    > .home-search-results-item-title {
+      display: inline-block;
+      vertical-align: middle;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+      width: 75%;
+    }
+    > .home-search-results-item-duration {
+      float: right;
+      line-height: 1.8;
+    }
+  }
 }
