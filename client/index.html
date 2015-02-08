@@ -4,7 +4,7 @@
 
     <base href="/">
 
-    <title>Soundgether - Collaborative playlists made easy!</title>
+    <title>Soundgether</title>
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
@@ -29,29 +29,41 @@
 
     <!--<footer ng-include="'views/components/footer.html'"></footer>-->
 
+    <script src="socket.io/socket.io.js"></script>
+
     <!-- build:js app.js -->
-      <script src="bower_components/jquery/dist/jquery.js"></script>
+      <!-- bower:js -->
       <script src="bower_components/angular/angular.js"></script>
       <script src="bower_components/angular-route/angular-route.js"></script>
       <script src="bower_components/angular-cookies/angular-cookies.js"></script>
       <script src="bower_components/angular-animate/angular-animate.js"></script>
+      <script src="bower_components/angular-socket-io/socket.js"></script>
+      <script src="bower_components/jquery/dist/jquery.js"></script>
       <script src="bower_components/lodash/dist/lodash.compat.js"></script>
       <script src="bower_components/moment/moment.js"></script>
       <script src="bower_components/bootstrap-sass/assets/javascripts/bootstrap.js"></script>
       <script src="bower_components/restangular/dist/restangular.js"></script>
+      <!-- endinject -->
 
       <!-- inject:js -->
       <script src="app.js"></script>
       <script src="directives/focus-me.directive.js"></script>
+      <script src="services/auth/auth.js"></script>
+      <script src="services/socket/socket.mock.js"></script>
+      <script src="services/socket/socket.service.js"></script>
       <script src="services/soundcloud/soundcloud.js"></script>
       <script src="views/home/home.controller.js"></script>
       <script src="views/home/home.js"></script>
+      <script src="views/login/login.controller.js"></script>
+      <script src="views/login/login.js"></script>
       <script src="views/playlist/playlist.controller.js"></script>
       <script src="views/playlist/playlist.js"></script>
+      <script src="views/signup/signup.controller.js"></script>
+      <script src="views/signup/signup.js"></script>
       <!-- endinject -->
     <!-- endbuild -->
 
-  <script src="http://localhost:35729/livereload.js?snipver=1"></script>
+    <script src="http://localhost:35729/livereload.js?snipver=1"></script>
 
   </body>
 </html>

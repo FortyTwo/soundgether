@@ -1,11 +1,12 @@
 {
-  "generator-mocha": {},
   "generator-bangular": {
-    "version": "0.3.3",
+    "version": "0.7.1",
     "filters": {
       "backend": "mongo",
       "ngCookies": true,
-      "ngAnimate": true
+      "ngAnimate": true,
+      "sockets": true,
+      "auth": true
     }
   }
 }

@@ -8,9 +8,10 @@ var runSequence = require('run-sequence');
 var sq = require('streamqueue');
 var path = require('path');
 var fs = require('fs');
+var karma = require('karma').server;
 var $ = require('gulp-load-plugins')();
 
-process.env.NODE_ENV = $.util.env.env || 'development';
+process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
 var config = require('./server/config/environment');
 
@@ -154,46 +155,25 @@ function testClient (done) {
 
   log('Running client test...', { padding: true });
 
-  gulp.src([
-    'client/bower_components/angular/angular.js',
-    'client/bower_components/angular-mocks/angular-mocks.js',
-    'client/bower_components/angular-route/angular-route.js',
-    'client/bower_components/angular-animate/angular-animate.js',
-    'client/bower_components/angular-cookies/angular-cookies.js',
-    'client/app.js',
-    'client/views/**/*.js',
-    'client/services/**/*.js',
-    'client/directives/**/*.js',
-    'client/directives/**/*.html',
-    'client/filters/**/*.js'
-  ])
-    .pipe($.karma({
-      action: 'run',
-      configFile: 'client/karma.conf.js'
-    }))
-    .on('error', function (err) {
-      console.log(err);
-      this.emit('end');
-    })
-    .once('end', function () {
-      done();
-    });
+  karma.start({
+    configFile: __dirname + '/client/karma.conf.js'
+  }, done);
 }
 
 gulp.task('test', function (done) {
   process.env.NODE_ENV = 'test';
-  var filter = process.argv[3] ? process.argv[3].substr(2) : false;
-  if (filter === 'client') {
+  var arg = process.argv[3] ? process.argv[3].substr(2) : false;
+  if (arg === 'client') {
     return testClient(function () {
       process.exit();
       done();
     });
-  } else if (filter === 'server') {
+  } else if (arg === 'server') {
     return testServer(function () {
       process.exit();
       done();
     });
-  } else if (filter === false) {
+  } else if (arg === false) {
     return testClient(function () {
       testServer(function () {
         process.exit();
@@ -201,7 +181,7 @@ gulp.task('test', function (done) {
       });
     });
   } else {
-    console.log('Wrong parameter [%s], availables : --client, --server', filter);
+    console.log('Wrong parameter [%s], availables : --client, --server', arg);
   }
 });
 
@@ -209,18 +189,22 @@ gulp.task('test', function (done) {
  * Launch server
  */
 gulp.task('serve', ['watch'], function () {
-  return $.nodemon({ script: 'server/server.js', ext: 'js', ignore: ['client', 'dist', 'node_modules'] })
+  return $.nodemon({
+      script: 'server/server.js',
+      ext: 'js',
+      ignore: ['client', 'dist', 'node_modules']
+    })
     .on('start', function () {
       if (!openOpts.already) {
         openOpts.already = true;
         gulp.src('client/index.html')
+          .pipe($.wait(500))
           .pipe($.open('', openOpts));
+      } else {
+        setTimeout(function () {
+          $.livereload.changed('/');
+        }, 1000);
       }
-    })
-    .on('restart', function () {
-      gulp.src('client/index.html')
-        .pipe($.wait(250))
-        .pipe($.livereload());
     });
 });
 
@@ -284,7 +268,7 @@ gulp.task('scripts', function () {
 
 gulp.task('replace', function () {
   return gulp.src('dist/client/index.html')
-    .pipe($.replace(/<script.*livereload.*><\/script>\n*/, ''))
+    .pipe($.replace(/    <script.*livereload.*><\/script>\n*/, ''))
     .pipe(gulp.dest('dist/client'));
 });
 
@@ -299,7 +283,7 @@ gulp.task('rev', function () {
         return path.basename(file.path, ext) + '.' + hash.substr(0, 8) + ext;
       }
     }))
-    .pipe(gulp.dest('dist/client/'))
+    .pipe(gulp.dest('dist/client/'));
 });
 
 gulp.task('build', function (cb) {
@@ -318,16 +302,18 @@ gulp.task('build', function (cb) {
 
 gulp.task('version', function () {
   return gulp.src(['./package.json', './bower.json'])
-    .pipe($.bump({ type: process.argv[3] ? process.argv[3].substr(2) : 'patch' }))
+    .pipe($.bump({
+      type: process.argv[3] ? process.argv[3].substr(2) : 'patch'
+    }))
     .pipe(gulp.dest('./'));
 });
 
 gulp.task('bump', ['version'], function () {
   fs.readFile('./package.json', function (err, data) {
-    if (err) { return; }
+    if (err) { return ; }
     return gulp.src(['./package.json', './bower.json'])
       .pipe($.git.add())
-      .pipe($.git.commit('chore(core): bump to ' + JSON.parse(data.toString()).version));
+      .pipe($.git.commit('chore(core): bump to ' + JSON.parse(data).version));
   });
 });
 
