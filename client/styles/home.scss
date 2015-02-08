@@ -35,11 +35,11 @@
   top: 50%;
   @include transition(all ease 0.5s);
   @include transition-delay(250ms);
-  transform: translate(-50%, -50%);
+  @include translate(-50%, -50%)
 }
 
 .home-centered-top {
-  transform: translate(-50%, -160%);
+  @include translate(-50%, -160%);
 }
 
 .home-welcome-text {
@@ -84,6 +84,7 @@
   top: 56px;
   left: 3px;
   right: 120px;
+  z-index: 10;
   > .home-search-results-item {
     background-color: #fff;
     color: $gray-dark;
@@ -122,4 +123,26 @@
       line-height: 1.8;
     }
   }
+}
+
+.home-description {
+  text-shadow: 2px 3px 1px rgba(0, 0, 0, 0.3);
+  @include transition(all ease 0.5s);
+  @include transition-delay(250ms);
+  text-align: center;
+  font-size: 30px;
+  color: $brand-primary;
+  position: absolute;
+  visibility: hidden;
+  opacity: 0;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  @include translate(-50%, -100%);
+}
+
+.home-description-showed {
+  visibility: visible;
+  opacity: 1;
+  @include translate(-50%, 400%);
 }
