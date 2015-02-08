@@ -11,7 +11,7 @@ angular.module('soundgether')
 
     return {
       search: function (query) {
-        return SCRestangular.all('tracks').getList({q: query, limit: 10, client_id: clientId});
+        return SCRestangular.all('tracks').getList({q: query, limit: 5, client_id: clientId});
       }
     }
   });

@@ -39,7 +39,7 @@
 }
 
 .home-centered-top {
-  @include translate(-50%, -160%);
+  @include translate(-50%, -100%);
 }
 
 .home-welcome-text {
@@ -59,6 +59,7 @@
   margin: 0 auto;
   width: 75%;
   position: relative;
+  z-index: 100;
 }
 
 .input-xlg {
@@ -83,8 +84,7 @@
   position: absolute;
   top: 56px;
   left: 3px;
-  right: 120px;
-  z-index: 10;
+  right: 127px;
   > .home-search-results-item {
     background-color: #fff;
     color: $gray-dark;
@@ -138,7 +138,7 @@
   top: 50%;
   left: 50%;
   width: 100%;
-  @include translate(-50%, -100%);
+  @include translate(-50%, 50%);
 }
 
 .home-description-showed {
