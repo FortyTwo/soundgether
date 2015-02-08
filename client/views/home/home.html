@@ -22,18 +22,29 @@
       <h1 class="home-welcome-text">
         WELCOME TO <span class="home-welcome-title">SOUNDGETHER</span>
       </h1>
+
       <div class="home-search">
         <div class="home-input">
           <div class="input-group">
-            <input class="form-control input-xlg" type="text" placeholder="Search for an artist, a track..." ng-focus="vm.searchTop = true" ng-blur="vm.searchTop = false" ng-model-options='{ debounce: 500 }' ng-model="vm.query" ng-change="vm.search(vm.query)"/>
+
+            <input class="form-control input-xlg"
+                   type="text"
+                   placeholder="Search for an artist, a track..."
+                   ng-focus="vm.searchTop = true"
+                   ng-blur="vm.searchTop = false"
+                   ng-model-options='{ debounce: 200 }'
+                   ng-model="vm.query"
+                   focus-me="true"
+                   ng-change="vm.search(vm.query)"/>
+
             <span class="input-group-btn">
               <button class="btn btn-primary home-create-button">Create!</button>
             </span>
           </div>
-          <div class="home-search-results" ng-if="vm.query">
+          <div class="home-search-results" ng-show="vm.query">
             <div class="home-search-results-item" ng-repeat="result in vm.results">
               <div class="home-search-results-item-image">
-                <img ng-src="{{ vm.getArtwork(result, 'small') }}" />
+                <img ng-src="{{ vm.getArtwork(result, 'small') }}"/>
               </div>
               <div class="home-search-results-item-title">
                 {{ result.title }}

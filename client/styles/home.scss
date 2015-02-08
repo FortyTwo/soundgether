@@ -34,6 +34,7 @@
   left: 50%;
   top: 50%;
   @include transition(all ease 0.5s);
+  @include transition-delay(250ms);
   transform: translate(-50%, -50%);
 }
 
@@ -84,7 +85,6 @@
   left: 3px;
   right: 120px;
   > .home-search-results-item {
-    @include transition(all ease 0.1s);
     background-color: #fff;
     color: $gray-dark;
     font-size: 18px;

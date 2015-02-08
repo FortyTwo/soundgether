@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('soundgether')
-  .controller('HomeCtrl', function (soundcloud) {
+  .controller('HomeCtrl', function (soundcloud, $animate) {
 
     var vm = this;
 
@@ -14,12 +14,13 @@ angular.module('soundgether')
     vm.searchTop = false;
 
     vm.search = function (query) {
-      vm.results = [];
-      setTimeout(function () {
-        soundcloud.search(query).then(function (res) {
-          vm.results = res;
-        })
-      }, 500);
+      if (!query) {
+        vm.results = [];
+        return;
+      }
+      soundcloud.search(query).then(function (res) {
+        vm.results = res;
+      });
     };
 
     vm.getArtwork = function (result, size) {
