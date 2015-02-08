@@ -2,6 +2,7 @@
 
 var _ = require('lodash');
 var Playlist = require('./playlist.model');
+var Moniker = require('moniker');
 
 function handleError(res, err) {
   return res.status(500).send(err);
@@ -41,8 +42,10 @@ exports.show = function (req, res) {
  * @param res
  */
 exports.create = function (req, res) {
+  var names = Moniker.generator([Moniker.adjective, Moniker.noun], {glue: ' '});
+  var name = names.choose();
   var newPlaylist = {
-    name: 'default',
+    name: _.capitalize(name),
     tracks: [
       req.body.id
     ]
