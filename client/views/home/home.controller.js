@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('soundgether')
-  .controller('HomeCtrl', function (soundcloud, $animate) {
+  .controller('HomeCtrl', function ($location, Soundcloud, Playlist, Restangular) {
 
     var vm = this;
 
@@ -12,13 +12,15 @@ angular.module('soundgether')
     vm.query = null;
     vm.results = null;
     vm.searchTop = false;
+    vm.selectedResult = null;
 
     vm.search = function (query) {
+      vm.selectedResult = null;
       if (!query) {
         vm.results = [];
         return;
       }
-      soundcloud.search(query).then(function (res) {
+      Soundcloud.search(query).then(function (res) {
         vm.results = res;
       });
     };
@@ -44,6 +46,21 @@ angular.module('soundgether')
       }
       ret += ('0' + duration.seconds()).slice(-2);
       return ret;
-    }
+    };
+
+    vm.select = function (result) {
+      vm.selectedResult = result;
+      vm.query = result.title;
+    };
+
+    vm.createPlaylist = function () {
+      var track = Restangular.stripRestangular(vm.selectedResult);
+
+      Playlist.create(track)
+        .then(function (res) {
+          console.log(res);
+          $location.path('playlist/' + res._id);
+        });
+    };
 
   });

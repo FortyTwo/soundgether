@@ -203,7 +203,7 @@ gulp.task('serve', ['watch'], function () {
       } else {
         setTimeout(function () {
           $.livereload.changed('/');
-        }, 1000);
+        }, 2000);
       }
     });
 });

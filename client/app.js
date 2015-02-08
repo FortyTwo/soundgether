@@ -15,8 +15,8 @@ angular.module('soundgether', [
       });
 
     $locationProvider.html5Mode(true);
-    $httpProvider.interceptors.push('authInterceptor');
-    RestangularProvider.setBaseUrl('http://api.soundcloud.com/');
+    RestangularProvider.setBaseUrl('/api');
+    //$httpProvider.interceptors.push('authInterceptor');
 
   })
   .factory('authInterceptor',

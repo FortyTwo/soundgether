@@ -1,12 +1,13 @@
 'use strict';
 
-describe('Service: soundcloud', function () {
+describe('Service: Soundcloud', function () {
 
   beforeEach(module('soundgether'));
 
-  var soundcloud;
-  beforeEach(inject(function (_soundcloud_) {
-    soundcloud = _soundcloud_;
+  var Soundcloud;
+
+  beforeEach(inject(function (_Soundcloud_) {
+    Soundcloud = _Soundcloud_;
   }));
 
   it('should ...', function () {

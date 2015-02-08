@@ -6,6 +6,11 @@ angular.module('soundgether')
       .when('/playlist/:id', {
         templateUrl: 'views/playlist/playlist.html',
         controller: 'PlaylistCtrl',
-        controllerAs: 'vm'
+        controllerAs: 'vm',
+        resolve: {
+          playlist: function ($route, Playlist) {
+            return Playlist.get($route.current.params.id);
+          }
+        }
       });
   });

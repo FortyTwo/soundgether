@@ -5,6 +5,7 @@ var config = require('./config/environment');
 module.exports = function (app) {
 
   // API
+  app.use('/api/playlists', require('./api/playlist'));
   app.use('/api/users', require('./api/user'));
 
   // Auth

@@ -38,11 +38,11 @@
                    ng-change="vm.search(vm.query)"/>
 
             <span class="input-group-btn">
-              <button class="btn btn-primary home-create-button">Create!</button>
+              <button class="btn btn-primary home-create-button" ng-click="vm.createPlaylist()">Create!</button>
             </span>
           </div>
-          <div class="home-search-results" ng-show="vm.query">
-            <div class="home-search-results-item" ng-repeat="result in vm.results">
+          <div class="home-search-results" ng-show="vm.query && !vm.selectedResult">
+            <div class="home-search-results-item" ng-repeat="result in vm.results" ng-click="vm.select(result)">
               <div class="home-search-results-item-image">
                 <img ng-src="{{ vm.getArtwork(result, 'small') }}"/>
               </div>
