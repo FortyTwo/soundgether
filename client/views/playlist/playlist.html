@@ -1,1 +1,46 @@
-{{ vm.playlist | json }}
+<header ng-include="'views/components/navbar.html'"></header>
+
+<div class="playlist-main-content">
+  <div class="playlist-background" back-img="{{ vm.getArtwork(vm.currentTrack, 't500x500') }}"></div>
+  <div class="playlist-current-track-sound container">
+    <div class="row">
+      <div class="col-md-9">
+        <div class="playlist-name">
+          {{ vm.playlist.name }}
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="playlist-current-track-artwork">
+          <img ng-src="{{ vm.getArtwork(vm.currentTrack, 't500x500') }}" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="playlist-current-track">
+    <div class="container">
+      <div class="playlist-controls">
+        <i class="fa fa-backward"></i>
+        <i class="fa fa-play"></i>
+        <i class="fa fa-forward"></i>
+      </div>
+      <div class="playlist-current-track-infos">
+        <div class="playlist-current-track-title">
+          {{ vm.currentTrack.title }}
+        </div>
+        <div class="playlist-current-track-time">
+          00:00 /
+          {{ vm.getDuration(vm.currentTrack.duration) }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="playlist-tracks">
+  <div class="container">
+
+  </div>
+</div>
+
+<footer ng-include="'views/components/footer.html'"></footer>

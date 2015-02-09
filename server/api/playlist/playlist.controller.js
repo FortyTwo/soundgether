@@ -46,9 +46,9 @@ exports.create = function (req, res) {
   var name = names.choose();
   var newPlaylist = {
     name: _.capitalize(name),
-    tracks: [
-      req.body.id
-    ]
+    tracks: [{
+      id: req.body.id
+    }]
   };
   Playlist.create(newPlaylist, function (err, playlist) {
     if (err) { return handleError(res, err); }
