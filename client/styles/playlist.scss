@@ -1,21 +1,19 @@
 .playlist-main-content {
-  overflow: hidden;
   position: relative;
 }
 
 .playlist-background {
   z-index: -1;
-  margin: -1px;
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  -webkit-filter: blur(150px);
-  -moz-filter: blur(150px);
-  -o-filter: blur(150px);
-  -ms-filter: blur(150px);
-  filter: blur(150px);
+  -webkit-filter: blur(80px);
+  -moz-filter: blur(80px);
+  -o-filter: blur(80px);
+  -ms-filter: blur(80px);
+  filter: blur(80px);
   > .container {
     height: 70%;
   }
@@ -86,6 +84,56 @@
 }
 
 .playlist-tracks {
-  height: 500px;
+  min-height: 300px;
   background-color: $gray-lighter;
+}
+
+.playlist-tracklist {
+  margin-top: 30px;
+  border-right: 1px solid $gray-light;
+}
+
+.playlist-tracklist-title,
+.playlist-infos-title {
+  margin-bottom: 30px;
+  font-size: 25px;
+  color: $gray;
+}
+
+.playlist-infos {
+  margin-top: 30px;
+}
+
+.playlist-tracklist-track {
+  @extend .clearfix;
+  background-color: #fff;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 18px;
+}
+
+.playlist-tracklist-track-infos {
+  display: inline-block;
+  > img {
+    margin-right: 10px;
+    width: 60px;
+  }
+  > span {
+    vertical-align: middle;
+  }
+}
+
+.playlist-tracklist-track-play {
+  display: inline-block;
+  float: right;
+  margin-top: 2px;
+  > .fa-play {
+    float: right;
+    color: #fff;
+    background-color: $brand-primary;
+    font-size: 30px;
+    padding: 12px 12px 12px 19px;
+    border: 1px solid $brand-primary;
+    border-radius: 100px;
+  }
 }

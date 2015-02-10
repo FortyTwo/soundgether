@@ -39,7 +39,27 @@
 
 <div class="playlist-tracks">
   <div class="container">
-
+    <div class="row">
+      <div class="playlist-tracklist col-md-8">
+        <div class="playlist-tracklist-title">
+          TRACKLIST
+        </div>
+        <div class="playlist-tracklist-track" ng-repeat="track in vm.tracks">
+          <div class="playlist-tracklist-track-infos">
+            <img ng-src="{{ vm.getArtwork(track) }}" />
+            <span>{{ track.title }}</span>
+          </div>
+          <div class="playlist-tracklist-track-play">
+            <i class="fa fa-play"></i>
+          </div>
+        </div>
+      </div>
+      <div class="playlist-infos col-md-4">
+        <div class="playlist-infos-title">
+          INFOS
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 

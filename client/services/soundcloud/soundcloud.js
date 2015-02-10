@@ -11,7 +11,7 @@ angular.module('soundgether')
 
     return {
       search: function (query) {
-        return SCRestangular.all('tracks').getList({q: query, limit: 5, client_id: clientId});
+        return SCRestangular.all('tracks').getList({q: query, client_id: clientId});
       },
       getTrack: function (id) {
         return SCRestangular.one('tracks', id).get({client_id: clientId});
@@ -23,7 +23,7 @@ angular.module('soundgether')
         if (artwork === null) {
           artwork = track.user.avatar_url;
         }
-        return (artwork.replace('large', size));
+        return size ? artwork.replace('large', size) : artwork;
       },
       getDuration: function (input) {
         var duration = moment.duration(input),

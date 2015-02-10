@@ -42,7 +42,7 @@
             </span>
           </div>
           <div class="home-search-results" ng-show="vm.query && !vm.selectedResult">
-            <div class="home-search-results-item" ng-repeat="result in vm.results" ng-click="vm.select(result)">
+            <div class="home-search-results-item" ng-repeat="result in vm.results | filter: { streamable: true } | limitTo: 5" ng-click="vm.select(result)">
               <div class="home-search-results-item-image">
                 <img ng-src="{{ vm.getArtwork(result, 'small') }}"/>
               </div>
