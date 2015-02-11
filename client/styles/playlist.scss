@@ -1,5 +1,6 @@
 .playlist-main-content {
   position: relative;
+  overflow: hidden;
 }
 
 .playlist-background {
@@ -9,11 +10,8 @@
   left: -200px;
   right: -200px;
   bottom: -200px;
-  -webkit-filter: blur(50px);
-  -moz-filter: blur(50px);
-  -o-filter: blur(50px);
-  -ms-filter: blur(50px);
-  filter: blur(50px);
+  @include scale(1.1);
+  @include blur(50px);
   > .container {
     height: 70%;
   }

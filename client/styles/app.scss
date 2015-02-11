@@ -8,6 +8,7 @@ $footer-height: 150px;
 $input-border-focus: $brand-primary;
 
 @import "../bower_components/bootstrap-sass/assets/stylesheets/bootstrap";
+@import 'mixins';
 @import 'navbar';
 @import 'footer';
 @import 'home';
