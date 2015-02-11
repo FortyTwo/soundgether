@@ -1,0 +1,21 @@
+<div class="home-search">
+  <div class="home-input">
+    <div class="input-group">
+
+      <input class="form-control input-xlg"
+             type="text"
+             placeholder="Add the first track of your playlist..."
+             ng-focus="searchTop = true"
+             ng-blur="searchTop = false"
+             ng-model-options='{ debounce: 200 }'
+             ng-model="query"
+             focus-me="true"
+             ng-change="search(query)"/>
+
+            <span class="input-group-btn">
+              <button class="btn btn-primary home-create-button" ng-click="createPlaylist()">Create!</button>
+            </span>
+    </div>
+    <div search-results="results" query="query" selected-result="selectedResult" context="{{ context }}"></div>
+  </div>
+</div>

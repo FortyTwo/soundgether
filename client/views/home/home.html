@@ -22,40 +22,7 @@
       <h1 class="home-welcome-text">
         WELCOME TO <span class="home-welcome-title">SOUNDGETHER<span class="home-title-beta">BETA</span></span>
       </h1>
-
-      <div class="home-search">
-        <div class="home-input">
-          <div class="input-group">
-
-            <input class="form-control input-xlg"
-                   type="text"
-                   placeholder="Add the first track of your playlist..."
-                   ng-focus="vm.searchTop = true"
-                   ng-blur="vm.searchTop = false"
-                   ng-model-options='{ debounce: 200 }'
-                   ng-model="vm.query"
-                   focus-me="true"
-                   ng-change="vm.search(vm.query)"/>
-
-            <span class="input-group-btn">
-              <button class="btn btn-primary home-create-button" ng-click="vm.createPlaylist()">Create!</button>
-            </span>
-          </div>
-          <div class="home-search-results" ng-show="vm.query && !vm.selectedResult">
-            <div class="home-search-results-item" ng-repeat="result in vm.results | filter: { streamable: true } | limitTo: 5" ng-click="vm.select(result)">
-              <div class="home-search-results-item-image">
-                <img ng-src="{{ vm.getArtwork(result, 'small') }}"/>
-              </div>
-              <div class="home-search-results-item-title">
-                {{ result.title }}
-              </div>
-              <div class="home-search-results-item-duration">
-                {{ result.duration | prettyTime }}
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <div search-input search-top="vm.searchTop" query="vm.query" context="home"></div>
       <div class="home-description" ng-class="{'home-description-showed': vm.searchTop || vm.query}">
         Add a track. Share with your friends. Enjoy.
       </div>

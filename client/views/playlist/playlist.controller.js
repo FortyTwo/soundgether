@@ -7,7 +7,6 @@ angular.module('soundgether')
     vm.playlist = playlist;
     vm.tracks = [];
     vm.getArtwork = Soundcloud.getArtwork;
-    vm.getDuration = Soundcloud.getDuration;
 
     var retrieveTracks = function (tracks) {
       var promises = tracks.map(function (track) {
