@@ -5,15 +5,15 @@
 .playlist-background {
   z-index: -1;
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  -webkit-filter: blur(80px);
-  -moz-filter: blur(80px);
-  -o-filter: blur(80px);
-  -ms-filter: blur(80px);
-  filter: blur(80px);
+  top: -200px;
+  left: -200px;
+  right: -200px;
+  bottom: -200px;
+  -webkit-filter: blur(50px);
+  -moz-filter: blur(50px);
+  -o-filter: blur(50px);
+  -ms-filter: blur(50px);
+  filter: blur(50px);
   > .container {
     height: 70%;
   }

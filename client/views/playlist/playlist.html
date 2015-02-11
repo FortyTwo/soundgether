@@ -47,7 +47,7 @@
         <div class="playlist-tracklist-track" ng-repeat="track in vm.tracks">
           <div class="playlist-tracklist-track-infos">
             <img ng-src="{{ vm.getArtwork(track) }}" />
-            <span>{{ track.title }}</span>
+            <span>{{ track.title }} — {{ vm.getDuration(track.duration) }}</span>
           </div>
           <div class="playlist-tracklist-track-play">
             <i class="fa fa-play"></i>

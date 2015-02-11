@@ -52,7 +52,20 @@
   .home-welcome-title {
     color: $brand-primary;
     font-weight: 700;
+    position: relative;
   }
+}
+
+.home-title-beta {
+  position: absolute;
+  font-weight: normal;
+  @include rotate(-20deg);
+  background-color: black;
+  font-size: 13px;
+  padding: 5px;
+  color: #fff;
+  bottom: 0;
+  right: -15px;
 }
 
 .home-input {
