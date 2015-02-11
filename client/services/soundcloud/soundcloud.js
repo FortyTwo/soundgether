@@ -25,17 +25,8 @@ angular.module('soundgether')
         }
         return size ? artwork.replace('large', size) : artwork;
       },
-      getDuration: function (input) {
-        var duration = moment.duration(input),
-          ret = "";
-        if (duration.hours() > 0) {
-          ret += ('0' + duration.hours()).slice(-2) + ":";
-        }
-        if (duration.minutes() > 0) {
-          ret += ('0' + duration.minutes()).slice(-2) + ":";
-        }
-        ret += ('0' + duration.seconds()).slice(-2);
-        return ret;
+      getClientId: function () {
+        return clientId;
       }
     }
   });

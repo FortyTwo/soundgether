@@ -5,7 +5,8 @@ angular.module('soundgether', [
   'ngCookies',
   'ngAnimate',
   'btford.socket-io',
-  'restangular'
+  'restangular',
+  'ngAudio'
 ])
   .config(function ($routeProvider, $locationProvider, $httpProvider, RestangularProvider) {
 

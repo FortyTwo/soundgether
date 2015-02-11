@@ -50,7 +50,7 @@
                 {{ result.title }}
               </div>
               <div class="home-search-results-item-duration">
-                {{ vm.getDuration(result.duration) }}
+                {{ result.duration | prettyTime }}
               </div>
             </div>
           </div>
