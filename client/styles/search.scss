@@ -42,3 +42,49 @@
     }
   }
 }
+
+.playlist-search-results {
+  position: absolute;
+  top: 34px;
+  left: 3px;
+  right: 40px;
+  z-index: 10;
+  > .playlist-search-results-item {
+    background-color: #fff;
+    color: $gray-dark;
+    font-size: 14px;
+    box-shadow: 2px 0 1px rgba(0, 0, 0, 0.3);
+    padding: 10px 15px;
+    border-bottom: 1px solid $gray-lighter;
+    &:hover {
+      color: #ffffff;
+      background-color: $gray-dark;
+      border-bottom-color: $gray-dark;
+      cursor: pointer;
+    }
+    &:last-child {
+      border-bottom-left-radius: 5px;
+      border-bottom-right-radius: 5px;
+    }
+    > .playlist-search-results-item-image {
+      display: inline-block;
+      margin-right: 5px;
+      width: 32px;
+      height: 32px;
+      background-color: $gray-lighter;
+      vertical-align: middle;
+    }
+    > .playlist-search-results-item-title {
+      display: inline-block;
+      vertical-align: middle;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+      width: 65%;
+    }
+    > .playlist-search-results-item-duration {
+      float: right;
+      line-height: 2.4;
+    }
+  }
+}

@@ -52,7 +52,7 @@ function log (msg, options) {
 gulp.task('sass', function () {
   return gulp.src('client/styles/app.scss')
     .pipe($.plumber())
-    .pipe($.sass())
+    .pipe($.sass({precision: 10}))
     .pipe(gulp.dest('client/styles/css'));
 });
 
@@ -95,7 +95,7 @@ gulp.task('watch', ['inject'], function () {
   $.watch('client/styles/**/*.scss', function () {
     gulp.src('client/styles/app.scss')
       .pipe($.plumber())
-      .pipe($.sass())
+      .pipe($.sass({precision: 10}))
       .pipe(gulp.dest('client/styles/css'))
       .pipe($.livereload());
   });

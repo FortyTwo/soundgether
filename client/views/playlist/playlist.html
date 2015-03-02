@@ -42,11 +42,15 @@
 <div class="playlist-tracks">
   <div class="container">
     <div class="row">
+      {{ vm.playlist.tracks }}
       <div class="playlist-tracklist col-md-8">
-        <div class="playlist-tracklist-title">
-          TRACKLIST
+        <div class="playlist-tracklist-header">
+          <div class="playlist-tracklist-title">TRACKLIST</div>
+          <div class="playlist-tracklist-search">
+            <div search-input context="playlist" playlist="vm.playlist"></div>
+          </div>
         </div>
-        <div class="playlist-tracklist-track" ng-repeat="track in vm.tracks">
+        <div class="playlist-tracklist-track" ng-repeat="track in vm.playlist.tracks">
           <div class="playlist-tracklist-track-infos">
             <img ng-src="{{ vm.getArtwork(track.track) }}" />
             <span>{{ track.track.title }} — {{ track.track.duration | prettyTime }}</span>

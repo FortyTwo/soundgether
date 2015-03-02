@@ -7,7 +7,8 @@ angular.module('soundgether')
       scope: {
         searchTop: '=?',
         context: '@',
-        query: '=?'
+        query: '=?',
+        playlist: '=?'
       },
       templateUrl: 'directives/search-input/search-input.html',
       link: function (scope) {
@@ -35,6 +36,15 @@ angular.module('soundgether')
             .then(function (res) {
               $location.path('playlist/' + res._id);
             });
+        };
+
+        scope.addATrack = function () {
+          Playlist.addATrack(scope.playlist, scope.selectedResult.id).then(function () {
+            /*Soundcloud.getTrack(scope.selectedResult.id).then(function (res) {
+              console.log(res);
+              scope.playlist.tracks.push(res);
+            });*/
+          });
         };
 
       }

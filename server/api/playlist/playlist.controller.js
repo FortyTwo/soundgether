@@ -64,13 +64,13 @@ exports.create = function (req, res) {
  */
 exports.update = function (req, res) {
   if (req.body._id) { delete req.body._id; }
-  Playlist.findById(req.params.id, function (err, playlist) {
-    if (err) { return handleError(res, err); }
+  Playlist.findById(req.params.id).lean().exec(function (err, playlist) {
+    if (err) { return handleError(res, err);   }
     if (!playlist) { return res.status(404).end(); }
-    var updated = _.merge(playlist, req.body);
-    updated.save(function (err) {
+    var updated = _.merge(req.body, playlist);
+    Playlist.update({ _id: updated._id }, updated, function (err) {
       if (err) { return handleError(res, err); }
-      return res.status(200).json(playlist);
+      return res.status(200).json(updated);
     });
   });
 };

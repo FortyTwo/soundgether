@@ -17,6 +17,9 @@ angular.module('soundgether', [
 
     $locationProvider.html5Mode(true);
     RestangularProvider.setBaseUrl('/api');
+    RestangularProvider.setRestangularFields({
+      id: "_id"
+    });
     //$httpProvider.interceptors.push('authInterceptor');
 
   })

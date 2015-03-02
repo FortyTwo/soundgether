@@ -1,10 +1,11 @@
-<div class="home-search">
-  <div class="home-input">
+<div class="{{ context }}-search">
+  <div class="{{ context }}-input">
     <div class="input-group">
 
-      <input class="form-control input-xlg"
+      <input class="form-control"
+             ng-class="{'input-xlg': context === 'home'}"
              type="text"
-             placeholder="Add the first track of your playlist..."
+             placeholder="{{ context === 'home' ? 'Add the first track of your playlist...' : 'Add a track!' }}"
              ng-focus="searchTop = true"
              ng-blur="searchTop = false"
              ng-model-options='{ debounce: 200 }'
@@ -13,7 +14,10 @@
              ng-change="search(query)"/>
 
             <span class="input-group-btn">
-              <button class="btn btn-primary home-create-button" ng-click="createPlaylist()">Create!</button>
+              <button class="btn btn-primary {{ context }}-create-button" ng-click="context === 'home' ? createPlaylist() : addATrack()">
+                <span ng-if="context === 'home'">Create!</span>
+                <span ng-if="context === 'playlist'"><i class="fa fa-plus"></i></span>
+              </button>
             </span>
     </div>
     <div search-results="results" query="query" selected-result="selectedResult" context="{{ context }}"></div>

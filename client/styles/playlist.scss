@@ -98,11 +98,23 @@
   border-right: 1px solid $gray-light;
 }
 
-.playlist-tracklist-title,
+.playlist-tracklist-header,
 .playlist-infos-title {
+  @extend .clearfix;
   margin-bottom: 30px;
+}
+
+.playlist-tracklist-title {
   font-size: 25px;
   color: $gray;
+  float: left;
+}
+
+.playlist-tracklist-search {
+  float: right;
+  width: 50%;
+  margin-top: 2px;
+  position: relative;
 }
 
 .playlist-infos {

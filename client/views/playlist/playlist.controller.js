@@ -8,8 +8,17 @@ angular.module('soundgether')
     vm.tracks = [];
     vm.getArtwork = Soundcloud.getArtwork;
 
-    var retrieveTracks = function (tracks) {
-      var promises = tracks.map(function (track) {
+    var retrieveTracks = function () {
+      angular.forEach(vm.playlist.tracks, function (value) {
+        Soundcloud.getTrack(value.id).then(function (res) {
+          _.assign(value, {
+            track: res
+            //audio: ngAudio.load(res.stream_url + '?client_id=' + Soundcloud.getClientId())
+          });
+        });
+      });
+      vm.currentTrack = vm.playlist.tracks[0];
+      /*var promises = tracks.map(function (track) {
         return Soundcloud.getTrack(track.id).then(function (res) {
           vm.tracks.push({
             track: res,
@@ -17,12 +26,14 @@ angular.module('soundgether')
           });
         });
       });
-      return $q.all(promises);
+      return $q.all(promises);*/
     };
+    retrieveTracks();
 
-    retrieveTracks(vm.playlist.tracks).then(function () {
-      vm.currentTrack = vm.tracks[0];
-    });
+    /*retrieveTracks().then(function () {
+      vm.playlist.tracks = vm.tracks;
+      vm.currentTrack = vm.playlist.tracks[0];
+    });*/
 
     vm.playPauseTrack = function (track) {
       if (vm.isPlaying(track)) {
