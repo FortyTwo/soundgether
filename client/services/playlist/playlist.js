@@ -11,11 +11,8 @@ angular.module('soundgether')
         return Restangular.all('playlists').post(data);
       },
       addATrack: function (playlist, trackId) {
-        //delete playlist.tracks[0]._id;
-        playlist.tracks.push({
-          id: trackId
-        });
-        console.log(playlist.tracks);
+        playlist.tracks.push({id: trackId});
+        console.log(playlist);
         return playlist.put();
       }
     }

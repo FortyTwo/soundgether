@@ -5,35 +5,25 @@ angular.module('soundgether')
     var vm = this;
 
     vm.playlist = playlist;
-    vm.tracks = [];
     vm.getArtwork = Soundcloud.getArtwork;
 
     var retrieveTracks = function () {
-      angular.forEach(vm.playlist.tracks, function (value) {
-        Soundcloud.getTrack(value.id).then(function (res) {
+      var promises = vm.playlist.tracks.map(function (value) {
+        return Soundcloud.getTrack(value.id).then(function (res) {
           _.assign(value, {
             track: res
             //audio: ngAudio.load(res.stream_url + '?client_id=' + Soundcloud.getClientId())
           });
         });
       });
-      vm.currentTrack = vm.playlist.tracks[0];
-      /*var promises = tracks.map(function (track) {
-        return Soundcloud.getTrack(track.id).then(function (res) {
-          vm.tracks.push({
-            track: res,
-            audio: ngAudio.load(res.stream_url + '?client_id=' + Soundcloud.getClientId())
-          });
-        });
-      });
-      return $q.all(promises);*/
+      return $q.all(promises);
     };
     retrieveTracks();
 
-    /*retrieveTracks().then(function () {
-      vm.playlist.tracks = vm.tracks;
+    retrieveTracks().then(function () {
       vm.currentTrack = vm.playlist.tracks[0];
-    });*/
+      //vm.currentTrack.audio = ngAudio.load(vm.currentTrack.stream_url + '?client_id=' + Soundcloud.getClientId());
+    });
 
     vm.playPauseTrack = function (track) {
       if (vm.isPlaying(track)) {
