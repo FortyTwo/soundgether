@@ -10,6 +10,7 @@ router.get('/:id', controller.show);
 router.post('/', controller.create);
 
 router.put('/:id', controller.update);
+router.put('/:id/add-track', controller.addTrack);
 
 router.delete('/:id', controller.destroy);
 

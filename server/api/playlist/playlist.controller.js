@@ -76,6 +76,24 @@ exports.update = function (req, res) {
 };
 
 /**
+ * Updates an existing Playlist in the DB.
+ *
+ * @param req
+ * @param res
+ */
+exports.addTrack = function (req, res) {
+  Playlist.findById(req.params.id).exec(function (err, playlist) {
+    if (err) { return handleError(res, err);   }
+    if (!playlist) { return res.status(404).end(); }
+    playlist.tracks.push({id: req.body.trackId});
+    playlist.save(function (err) {
+      if (err) { return handleError(res, err); }
+      return res.status(200).end();
+    });
+  });
+};
+
+/**
  * Deletes a Playlist from the DB.
  *
  * @param req

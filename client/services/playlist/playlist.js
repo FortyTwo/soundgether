@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('soundgether')
-  .service('Playlist', function (Restangular) {
+  .factory('Playlist', function (Restangular, $http, $q, Soundcloud, ngAudio) {
 
     return {
       get: function (id) {
@@ -11,9 +11,22 @@ angular.module('soundgether')
         return Restangular.all('playlists').post(data);
       },
       addATrack: function (playlist, trackId) {
-        playlist.tracks.push({id: trackId});
-        console.log(playlist);
-        return playlist.put();
+
+        var def = $q.defer();
+
+        $http.put('/api/playlists/' + playlist._id + '/add-track', { trackId: trackId })
+          .then(function () {
+            Soundcloud.getTrack(trackId).then(function (res) {
+              playlist.tracks.push({
+                track: res,
+                audio: ngAudio.load(res.stream_url + '?client_id=' + Soundcloud.getClientId())
+              });
+            });
+          })
+          .catch(function (err) {
+            def.reject(err);
+          });
+        return def.promise;
       }
     }
   });

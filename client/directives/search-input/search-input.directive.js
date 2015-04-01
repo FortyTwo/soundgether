@@ -40,12 +40,7 @@ angular.module('soundgether')
 
         scope.addATrack = function () {
           Playlist.addATrack(scope.playlist, scope.selectedResult.id).then(function () {
-            Soundcloud.getTrack(scope.selectedResult.id).then(function (res) {
-              scope.playlist.tracks.push( {
-                track: res,
-                //audio: ngAudio.load(res.stream_url + '?client_id=' + Soundcloud.getClientId())
-              });
-            });
+
           });
         };
 
