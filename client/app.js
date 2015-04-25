@@ -20,7 +20,7 @@ angular.module('soundgether', [
     RestangularProvider.setRestangularFields({
       id: "_id"
     });
-    //$httpProvider.interceptors.push('authInterceptor');
+    $httpProvider.interceptors.push('authInterceptor');
 
   })
   .factory('authInterceptor',

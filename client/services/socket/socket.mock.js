@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('soundgether')
-  .factory('Socket', function (socketFactory) {
+  .factory('Socket', function () {
 
     return {
       socket: {
@@ -10,6 +10,9 @@ angular.module('soundgether')
         emit: angular.noop,
         receive: angular.noop
       },
+      emit: angular.noop,
+      on: angular.noop,
+      clean: angular.noop,
       syncModel: angular.noop,
       unsyncModel: angular.noop
     };

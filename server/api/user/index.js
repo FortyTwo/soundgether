@@ -9,3 +9,4 @@ router.get('/me', auth.isAuthenticated(), controller.getMe);
 router.post('/', controller.create);
 
 module.exports = router;
+

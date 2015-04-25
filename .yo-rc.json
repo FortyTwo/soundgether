@@ -1,10 +1,19 @@
 {
   "generator-bangular": {
-    "version": "0.7.1",
+    "version": "0.10.3",
     "filters": {
       "backend": "mongo",
+      "reload": "livereload",
       "ngCookies": true,
+      "ngResource": false,
+      "ngSanitize": false,
       "ngAnimate": true,
+      "hasDocs": false,
+      "control": true,
+      "karma": true,
+      "mocha": true,
+      "e2e": true,
+      "hasTests": true,
       "sockets": true,
       "auth": true
     }
