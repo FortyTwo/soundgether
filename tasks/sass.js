@@ -11,6 +11,6 @@ var sass    = require('gulp-sass');
 module.exports = function () {
   return gulp.src('client/styles/app.scss')
     .pipe(plumber())
-    .pipe(sass())
+    .pipe(sass({precision: 10}))
     .pipe(gulp.dest('client/styles/css'));
 };
