@@ -1,25 +1,26 @@
 <div class="{{ context }}-search">
   <div class="{{ context }}-input">
-    <div class="input-group">
-
-      <input class="form-control"
-             ng-class="{'input-xlg': context === 'home'}"
-             type="text"
-             placeholder="{{ context === 'home' ? 'Add the first track of your playlist...' : 'Add a track!' }}"
-             ng-focus="searchTop = true"
-             ng-blur="searchTop = false"
-             ng-model-options='{ debounce: 200 }'
-             ng-model="query"
-             focus-me="true"
-             ng-change="search(query)"/>
-
-            <span class="input-group-btn">
-              <button class="btn btn-primary {{ context }}-create-button" ng-click="context === 'home' ? createPlaylist() : addATrack()">
-                <span ng-if="context === 'home'">Create!</span>
-                <span ng-if="context === 'playlist'"><i class="fa fa-plus"></i></span>
-              </button>
-            </span>
-    </div>
+    <form name="form">
+      <div class="input-group">
+        <input class="form-control"
+               ng-class="{'input-xlg': context === 'home'}"
+               type="text"
+               placeholder="{{ context === 'home' ? 'Add the first track of your playlist...' : 'Add a track!' }}"
+               ng-focus="searchTop = true"
+               ng-blur="searchTop = false"
+               ng-model-options='{ debounce: 200 }'
+               ng-model="query"
+               focus-me="true"
+               required
+               ng-change="search(query)"/>
+          <span class="input-group-btn">
+            <button ng-disabled="form.$invalid" class="btn btn-primary {{ context }}-create-button" ng-click="context === 'home' ? createPlaylist() : addATrack()">
+              <span ng-if="context === 'home'">Create!</span>
+              <span ng-if="context === 'playlist'"><i class="fa fa-plus"></i></span>
+            </button>
+          </span>
+      </div>
+    </form>
     <div search-results="results" query="query" selected-result="selectedResult" context="{{ context }}"></div>
   </div>
 </div>
