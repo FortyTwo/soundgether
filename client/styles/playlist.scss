@@ -1,6 +1,9 @@
+@import "mixins";
+
 .playlist-main-content {
   position: relative;
   overflow: hidden;
+  height: 380px;
 }
 
 .playlist-background {
@@ -10,15 +13,12 @@
   left: -200px;
   right: -200px;
   bottom: -200px;
-  @include scale(1.1);
+  transform: scale(1.1);
   @include blur(50px);
-  > .container {
-    height: 70%;
-  }
 }
 
 .playlist-current-track-sound {
-  height: 300px;
+  height: 100%;
 }
 
 .playlist-name {
@@ -35,24 +35,27 @@
 
 .playlist-current-track {
   background-color: rgba(255, 255, 255, 0.1);
-  height: 30%;
-  > .container {
-    height: 100%;
-  }
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+.playlist-current-track-inner {
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
 }
 
 .playlist-current-track-infos {
   color: white;
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
-  float: right;
-  line-height: 100px;
+  margin-left: auto;
   font-size: 20px;
 }
 
 .playlist-current-track-title,
 .playlist-current-track-time {
   display: inline-block;
-  vertical-align: middle;
 }
 
 .playlist-current-track-title {
@@ -61,10 +64,8 @@
 
 .playlist-controls {
   color: white;
-  @include user-select(none);
+  user-select: none;
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
-  float: left;
-  line-height: 100px;
   font-size: 30px;
   i {
     cursor: pointer;
@@ -91,67 +92,69 @@
 .playlist-tracks {
   min-height: 300px;
   background-color: $gray-lighter;
+  padding: 30px 0;
 }
 
 .playlist-tracklist {
-  margin-top: 30px;
   border-right: 1px solid $gray-light;
+  padding-right: 2%;
 }
 
-.playlist-tracklist-header,
+.playlist-tracklist-header {
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
+  margin-bottom: 20px;
+}
+
+.playlist-tracklist-title,
 .playlist-infos-title {
-  @extend .clearfix;
-  margin-bottom: 30px;
-}
-
-.playlist-tracklist-title {
-  font-size: 25px;
+  @include font-size(2.5);
   color: $gray;
-  float: left;
 }
 
 .playlist-tracklist-search {
-  float: right;
-  width: 50%;
-  margin-top: 2px;
   position: relative;
+  margin-left: auto;
 }
 
-.playlist-infos {
-  margin-top: 30px;
+.playlist-input {
+  .input {
+    width: 350px;
+    height: 35px;
+    padding: 10px 16px;
+    @include font-size(1.8);
+  }
+  button {
+    height: 35px;
+    @include font-size(1.8);
+    padding: 9px 15px 11px;
+  }
 }
 
 .playlist-tracklist-track {
-  @extend .clearfix;
   background-color: #fff;
   border-radius: 5px;
   padding: 10px;
-  font-size: 18px;
+  @include font-size(1.8);
   margin-bottom: 10px;
-}
-
-.playlist-tracklist-track-infos {
-  display: inline-block;
+  display: flex;
+  align-items: center;
   > img {
     margin-right: 10px;
     width: 60px;
   }
-  > span {
-    vertical-align: middle;
-  }
 }
 
 .playlist-tracklist-track-play-pause {
-  display: inline-block;
-  float: right;
-  margin-top: 2px;
+  margin-left: auto;
   > i {
     cursor: pointer;
     float: right;
     color: #fff;
-    background-color: $brand-primary;
+    background-color: $primary-color;
     font-size: 30px;
-    border: 1px solid $brand-primary;
+    border: 1px solid $primary-color;
     border-radius: 100px;
   }
   .fa-play {

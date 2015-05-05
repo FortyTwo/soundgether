@@ -1,39 +1,39 @@
-<header ng-include="'views/components/navbar.html'"></header>
+<div navbar=""></div>
 
 <div class="playlist-main-content">
   <div class="playlist-background" back-img="{{ vm.getArtwork(vm.currentTrack.track, 't500x500') }}"></div>
-  <div class="playlist-current-track-sound container">
-    <div class="row">
-      <div class="col-md-9">
-        <div class="playlist-name">
-          {{ vm.playlist.name }}
-        </div>
-        <div id="wave"></div>
+  <div class="playlist-current-track-sound fs-row">
+    <div class="fs-cell fs-lg-8">
+      <div class="playlist-name">
+        {{ vm.playlist.name }}
       </div>
-      <div class="col-md-3">
-        <div class="playlist-current-track-artwork">
-          <img ng-src="{{ vm.getArtwork(vm.currentTrack.track, 't500x500') }}" />
-        </div>
+      <div id="wave"></div>
+    </div>
+    <div class="fs-cell fs-lg-4">
+      <div class="playlist-current-track-artwork">
+        <img ng-src="{{ vm.getArtwork(vm.currentTrack.track, 't500x500') }}" />
       </div>
     </div>
   </div>
 
   <div class="playlist-current-track">
-    <div class="container">
-      <div class="playlist-controls">
-        <span><i class="fa fa-backward"></i></span>
-        <span class="playlist-play-pause">
-          <i ng-show="!vm.isPlaying(vm.currentTrack)" ng-click="vm.playPauseTrack(vm.currentTrack)" class="fa fa-play"></i>
-          <i ng-show="vm.isPlaying(vm.currentTrack)" ng-click="vm.playPauseTrack(vm.currentTrack)" class="fa fa-pause"></i>
-        </span>
-        <span><i class="fa fa-forward"></i></span>
-      </div>
-      <div class="playlist-current-track-infos">
-        <div class="playlist-current-track-title">
-          {{ vm.currentTrack.track.title }}
+    <div class="fs-row">
+      <div class="fs-cell fs-all-full playlist-current-track-inner">
+        <div class="playlist-controls">
+          <span><i class="fa fa-backward"></i></span>
+          <span class="playlist-play-pause">
+            <i ng-show="!vm.isPlaying(vm.currentTrack)" ng-click="vm.playPauseTrack(vm.currentTrack)" class="fa fa-play"></i>
+            <i ng-show="vm.isPlaying(vm.currentTrack)" ng-click="vm.playPauseTrack(vm.currentTrack)" class="fa fa-pause"></i>
+          </span>
+          <span><i class="fa fa-forward"></i></span>
         </div>
-        <div class="playlist-current-track-time">
-          {{ vm.getCurrentTime(vm.currentTrack) | prettyTime }} / {{ vm.currentTrack.track.duration | prettyTime }}
+        <div class="playlist-current-track-infos">
+          <div class="playlist-current-track-title">
+            {{ vm.currentTrack.track.title }}
+          </div>
+          <div class="playlist-current-track-time">
+            {{ vm.getCurrentTime(vm.currentTrack) | prettyTime }} / {{ vm.currentTrack.track.duration | prettyTime }}
+          </div>
         </div>
       </div>
     </div>
@@ -41,33 +41,31 @@
 </div>
 
 <div class="playlist-tracks">
-  <div class="container">
-    <div class="row">
-      <div class="playlist-tracklist col-md-8">
-        <div class="playlist-tracklist-header">
+  <div class="fs-row">
+    <div class="playlist-tracklist fs-cell fs-lg-8">
+      <div class="fs-row">
+        <div class="playlist-tracklist-header fs-cell fs-all-full">
           <div class="playlist-tracklist-title">TRACKLIST</div>
           <div class="playlist-tracklist-search">
-            <div search-input context="playlist" playlist="vm.playlist"></div>
-          </div>
-        </div>
-        <div class="playlist-tracklist-track" ng-repeat="track in vm.playlist.tracks" ng-show="track.track.title">
-          <div class="playlist-tracklist-track-infos">
-            <img ng-src="{{ vm.getArtwork(track.track) }}" />
-            <span>{{ track.track.title }} — {{ track.track.duration | prettyTime }}</span>
-          </div>
-          <div class="playlist-tracklist-track-play-pause">
-            <i ng-click="vm.playPauseTrack(track)" ng-show="!vm.isPlaying(track)" class="fa fa-play"></i>
-            <i ng-click="vm.playPauseTrack(track)" ng-show="vm.isPlaying(track)" class="fa fa-pause"></i>
+            <div search-input="" context="playlist" playlist="vm.playlist"></div>
           </div>
         </div>
       </div>
-      <div class="playlist-infos col-md-4">
-        <div class="playlist-infos-title">
-          INFOS
+      <div class="playlist-tracklist-track" ng-repeat="track in vm.playlist.tracks" ng-show="track.track.title">
+        <img ng-src="{{ vm.getArtwork(track.track) }}" />
+        <div>{{ track.track.title }} — {{ track.track.duration | prettyTime }}</div>
+        <div class="playlist-tracklist-track-play-pause">
+          <i ng-click="vm.playPauseTrack(track)" ng-show="!vm.isPlaying(track)" class="fa fa-play"></i>
+          <i ng-click="vm.playPauseTrack(track)" ng-show="vm.isPlaying(track)" class="fa fa-pause"></i>
         </div>
+      </div>
+    </div>
+    <div class="playlist-infos fs-cell fs-lg-4">
+      <div class="playlist-infos-title">
+        INFOS
       </div>
     </div>
   </div>
 </div>
 
-<footer ng-include="'views/components/footer.html'"></footer>
+<div footer=""></div>

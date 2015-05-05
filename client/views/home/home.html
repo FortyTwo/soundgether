@@ -1,11 +1,11 @@
 <div class="home-background-image">
   <div class="home-menu-links">
-    <ul class="pull-left">
+    <ul class="home-left-links">
       <li>
         <a href="/">About</a>
       </li>
     </ul>
-    <ul class="pull-right">
+    <ul class="home-right-links">
       <li>
         <a href="/">Explore</a>
       </li>
@@ -17,15 +17,14 @@
       </li>
     </ul>
   </div>
-  <div class="container">
-    <div class="home-centered" ng-class="{'home-centered-top': vm.searchTop || vm.query}">
-      <h1 class="home-welcome-text">
-        WELCOME TO <span class="home-welcome-title">SOUNDGETHER<span class="home-title-beta">BETA</span></span>
-      </h1>
-      <div search-input search-top="vm.searchTop" query="vm.query" context="home"></div>
-      <div class="home-description" ng-class="{'home-description-showed': vm.searchTop || vm.query}">
-        Add a track. Share with your friends. Enjoy.
-      </div>
+  <div class="home-centered" ng-class="{'home-centered-top': vm.searchTop || vm.query}">
+    <h1 class="home-welcome-text">
+      <span class="home-welcome-header">WELCOME TO</span>
+      <span class="home-welcome-title">SOUNDGETHER<span class="home-title-beta">BETA</span></span>
+    </h1>
+    <div search-input="" search-top="vm.searchTop" query="vm.query" context="home"></div>
+    <div class="home-description" ng-class="{'home-description-showed': vm.searchTop || vm.query}">
+      Create. Share. Enjoy.
     </div>
   </div>
 </div>

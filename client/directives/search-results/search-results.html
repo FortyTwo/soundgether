@@ -1,4 +1,4 @@
-<div class="{{ context }}-search-results" ng-show="query && !selectedResult">
+<div class="search-results {{ context }}-search-results" ng-show="query && !selectedResult">
   <div class="{{ context }}-search-results-item" ng-repeat="result in results | filter: { streamable: true } | limitTo: 5" ng-click="select(result)">
     <div class="{{ context }}-search-results-item-image">
       <img ng-src="{{ getArtwork(result, 'small') }}"/>

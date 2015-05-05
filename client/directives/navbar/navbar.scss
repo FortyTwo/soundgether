@@ -1,0 +1,44 @@
+@import "../../styles/mixins";
+
+.navbar {
+  background-color: $main-black;
+  display: flex;
+  height: 80px;
+  align-items: center;
+  > ul {
+    @extend .list-inline;
+    @extend .list-unstyled;
+    > li {
+      > a {
+        display: block;
+      }
+    }
+  }
+  .header-logo {
+    margin-left: 20px;
+    position: relative;
+    @include font-size(3.6);
+  }
+  .header-extra-links {
+    margin-left: auto;
+    > li {
+      margin-right: 20px;
+      > a {
+        color: white;
+        &:hover {
+          color: $primary-color;
+        }
+      }
+    }
+  }
+}
+
+.header-logo-beta {
+  position: absolute;
+  color: white;
+  font-weight: bold;
+  @include font-size(1.2);
+  text-transform: uppercase;
+  right: 0;
+  bottom: -8px;
+}

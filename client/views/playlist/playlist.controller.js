@@ -77,7 +77,6 @@ angular.module('soundgether')
     function drawWaveform (track) {
       var xhr = new XMLHttpRequest();
       xhr.open('GET', track.audio.id, true);
-      console.log(vm.currentTrack.audio.id);
       xhr.responseType = 'arraybuffer';
       xhr.onload = function () {
         if (this.status == 200) {
