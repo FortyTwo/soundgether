@@ -8,26 +8,6 @@ angular.module('soundgether')
     vm.getArtwork = Soundcloud.getArtwork;
     vm.currentTrack = {};
 
-    /**
-     * Quick and dirty (temporary) solution to request souncloud CDN with CORS headers
-     */
-    (function () {
-      var cors_api_host = 'cors-anywhere.herokuapp.com';
-      var cors_api_url = 'https://' + cors_api_host + '/';
-      var slice = [].slice;
-      var origin = window.location.protocol + '//' + window.location.host;
-      var open = XMLHttpRequest.prototype.open;
-      XMLHttpRequest.prototype.open = function () {
-        var args = slice.call(arguments);
-        var targetOrigin = /^https?:\/\/([^\/]+)/i.exec(args[1]);
-        if (targetOrigin && targetOrigin[0].toLowerCase() !== origin &&
-          targetOrigin[1] !== cors_api_host) {
-          args[1] = cors_api_url + args[1];
-        }
-        return open.apply(this, args);
-      };
-    })();
-
     function retrieveTracks () {
       var promises = vm.playlist.tracks.map(function (value) {
         return Soundcloud.getTrack(value.id).then(function (res) {
@@ -76,7 +56,8 @@ angular.module('soundgether')
 
     function drawWaveform (track) {
       var xhr = new XMLHttpRequest();
-      xhr.open('GET', track.audio.id, true);
+      var url = '/api/proxy/' + track.track.id;
+      xhr.open('GET', url, true);
       xhr.responseType = 'arraybuffer';
       xhr.onload = function () {
         if (this.status === 200) {
