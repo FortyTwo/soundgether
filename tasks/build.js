@@ -71,13 +71,13 @@ gulp.task('scripts', function () {
   var views = gulp.src('client/views/**/*.html')
     .pipe(angularTemplatecache({
       root: 'views',
-      module: 'sdg'
+      module: 'soundgether'
     }));
 
   var tpls = gulp.src('client/directives/**/*.html')
     .pipe(angularTemplatecache({
       root: 'directives',
-      module: 'sdg'
+      module: 'soundgether'
     }));
 
   var app = gulp.src('dist/client/app.js');
