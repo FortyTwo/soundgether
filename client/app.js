@@ -8,6 +8,7 @@ angular.module('soundgether', [
   'restangular',
   'ngAudio'
 ])
+  .constant('soundcloudClientId', 'ce442c9ae9f8ef31ed36d65d5c089a1b')
   .config(function ($routeProvider, $locationProvider, $httpProvider, RestangularProvider) {
 
     $routeProvider

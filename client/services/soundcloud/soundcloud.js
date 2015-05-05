@@ -1,9 +1,7 @@
 'use strict';
 
 angular.module('soundgether')
-  .service('Soundcloud', function (Restangular) {
-
-    var clientId = 'ce442c9ae9f8ef31ed36d65d5c089a1b';
+  .service('Soundcloud', function (Restangular, soundcloudClientId) {
 
     var SCRestangular = Restangular.withConfig(function (RestangularConfigurer) {
       RestangularConfigurer.setBaseUrl('http://api.soundcloud.com/');
@@ -11,10 +9,10 @@ angular.module('soundgether')
 
     return {
       search: function (query) {
-        return SCRestangular.all('tracks').getList({ q: query, client_id: clientId });
+        return SCRestangular.all('tracks').getList({ q: query, client_id: soundcloudClientId });
       },
       getTrack: function (id) {
-        return SCRestangular.one('tracks', id).get({ client_id: clientId });
+        return SCRestangular.one('tracks', id).get({ client_id: soundcloudClientId });
       },
       getArtwork: function (track, size) {
         if (!track) {
@@ -27,7 +25,7 @@ angular.module('soundgether')
         return size ? artwork.replace('large', size) : artwork;
       },
       getClientId: function () {
-        return clientId;
+        return soundcloudClientId;
       }
     };
   });
