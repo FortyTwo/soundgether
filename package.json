@@ -37,6 +37,7 @@
     "karma-ng-html2js-preprocessor": "^0.1.2",
     "karma-phantomjs-launcher": "^0.1.4",
     "main-bower-files": "^2.5.0",
+    "ripe": "^0.2.0",
     "run-sequence": "^1.0.2",
     "should": "^6.0.1",
     "streamqueue": "^0.1.2",
