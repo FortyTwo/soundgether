@@ -17,6 +17,7 @@ angular.module('soundgether')
         scope.results = null;
         scope.searchTop = false;
         scope.selectedResult = null;
+        scope.focus = (scope.context === 'home');
 
         scope.search = function (query) {
           scope.selectedResult = null;
@@ -43,7 +44,6 @@ angular.module('soundgether')
 
           });
         };
-
       }
     };
   });

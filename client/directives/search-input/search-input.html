@@ -9,7 +9,7 @@
                ng-blur="searchTop = false"
                ng-model-options='{ debounce: 200 }'
                ng-model="query"
-               focus-me="true"
+               focus-me="focus"
                required
                ng-change="search(query)"/>
         <button ng-class="{show: selectedResult}" class="btn btn-primary {{ context }}-create-button" ng-click="context === 'home' ? createPlaylist() : addATrack()">

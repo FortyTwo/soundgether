@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('soundgether')
-  .directive('focusMe', function () {
+  .directive('focusMe', function ($parse) {
     return {
       restrict: 'EA',
       scope: {
