@@ -11,14 +11,15 @@ angular.module('soundgether')
 
     return {
       search: function (query) {
-        return SCRestangular.all('tracks').getList({q: query, client_id: clientId});
+        return SCRestangular.all('tracks').getList({ q: query, client_id: clientId });
       },
       getTrack: function (id) {
-        return SCRestangular.one('tracks', id).get({client_id: clientId});
+        return SCRestangular.one('tracks', id).get({ client_id: clientId });
       },
       getArtwork: function (track, size) {
-        if (!track)
+        if (!track) {
           return;
+        }
         var artwork = track.artwork_url;
         if (artwork === null) {
           artwork = track.user.avatar_url;
@@ -28,5 +29,5 @@ angular.module('soundgether')
       getClientId: function () {
         return clientId;
       }
-    }
+    };
   });

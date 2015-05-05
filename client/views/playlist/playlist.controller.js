@@ -11,13 +11,13 @@ angular.module('soundgether')
     /**
      * Quick and dirty (temporary) solution to request souncloud CDN with CORS headers
      */
-    (function() {
+    (function () {
       var cors_api_host = 'cors-anywhere.herokuapp.com';
       var cors_api_url = 'https://' + cors_api_host + '/';
       var slice = [].slice;
       var origin = window.location.protocol + '//' + window.location.host;
       var open = XMLHttpRequest.prototype.open;
-      XMLHttpRequest.prototype.open = function() {
+      XMLHttpRequest.prototype.open = function () {
         var args = slice.call(arguments);
         var targetOrigin = /^https?:\/\/([^\/]+)/i.exec(args[1]);
         if (targetOrigin && targetOrigin[0].toLowerCase() !== origin &&
@@ -46,7 +46,7 @@ angular.module('soundgether')
     });
 
     vm.playPauseTrack = function (track) {
-      if (track != vm.currentTrack) {
+      if (track !== vm.currentTrack) {
         vm.currentTrack.audio.stop();
         drawWaveform(track);
       }
@@ -79,7 +79,7 @@ angular.module('soundgether')
       xhr.open('GET', track.audio.id, true);
       xhr.responseType = 'arraybuffer';
       xhr.onload = function () {
-        if (this.status == 200) {
+        if (this.status === 200) {
           new WaveformGenerator(this.response, {
             bar: {
               align: 'center',
@@ -92,7 +92,7 @@ angular.module('soundgether')
           })
             .then(function (svg) {
               $('#wave').html(svg);
-            })
+            });
         }
       };
       xhr.send();

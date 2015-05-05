@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('soundgether')
-  .directive('searchInput', function (Playlist, Restangular, Soundcloud, $location, ngAudio) {
+  .directive('searchInput', function (Playlist, Restangular, Soundcloud, $location) {
     return {
       restrict: 'EA',
       scope: {

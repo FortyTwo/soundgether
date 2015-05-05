@@ -28,5 +28,5 @@ angular.module('soundgether')
           });
         return def.promise;
       }
-    }
+    };
   });

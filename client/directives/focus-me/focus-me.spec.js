@@ -6,7 +6,7 @@ describe('Directive: focus-me', function () {
 
   var element, scope;
 
-  beforeEach(inject(function($compile, $rootScope){
+  beforeEach(inject(function ($compile, $rootScope) {
     scope = $rootScope.$new();
     element = angular.element('<focus-me></focus-me>');
     element = $compile(element)(scope);

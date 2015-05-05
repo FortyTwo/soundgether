@@ -6,7 +6,7 @@ describe('Directive: search-results', function () {
 
   var element, scope;
 
-  beforeEach(inject(function($compile, $rootScope){
+  beforeEach(inject(function ($compile, $rootScope) {
     scope = $rootScope.$new();
     element = angular.element('<search-results></search-results>');
     element = $compile(element)(scope);

@@ -6,7 +6,7 @@ describe('Directive: search-input', function () {
 
   var element, scope;
 
-  beforeEach(inject(function($compile, $rootScope){
+  beforeEach(inject(function ($compile, $rootScope) {
     scope = $rootScope.$new();
     element = angular.element('<search-input></search-input>');
     element = $compile(element)(scope);

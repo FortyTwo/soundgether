@@ -38,7 +38,7 @@ module.exports = function (config) {
     ],
 
     exclude: [
-      'services/socket/socket.service.js',
+      'services/socket/socket.service.js'
     ],
 
     reporters: ['progress'],

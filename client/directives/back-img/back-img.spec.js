@@ -6,7 +6,7 @@ describe('Directive: back-img', function () {
 
   var element, scope;
 
-  beforeEach(inject(function($compile, $rootScope){
+  beforeEach(inject(function ($compile, $rootScope) {
     scope = $rootScope.$new();
     element = angular.element('<back-img></back-img>');
     element = $compile(element)(scope);

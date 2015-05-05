@@ -4,7 +4,7 @@ var _ = require('lodash');
 var Playlist = require('./playlist.model');
 var Moniker = require('moniker');
 
-function handleError(res, err) {
+function handleError (res, err) {
   return res.status(500).send(err);
 }
 
@@ -42,7 +42,7 @@ exports.show = function (req, res) {
  * @param res
  */
 exports.create = function (req, res) {
-  var names = Moniker.generator([Moniker.adjective, Moniker.noun], {glue: ' '});
+  var names = Moniker.generator([Moniker.adjective, Moniker.noun], { glue: ' ' });
   var name = names.choose();
   var newPlaylist = {
     name: _.capitalize(name),
@@ -85,7 +85,7 @@ exports.addTrack = function (req, res) {
   Playlist.findById(req.params.id).exec(function (err, playlist) {
     if (err) { return handleError(res, err);   }
     if (!playlist) { return res.status(404).end(); }
-    playlist.tracks.push({id: req.body.trackId});
+    playlist.tracks.push({ id: req.body.trackId });
     playlist.save(function (err) {
       if (err) { return handleError(res, err); }
       return res.status(200).end();
