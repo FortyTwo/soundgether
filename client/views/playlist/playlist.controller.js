@@ -1,6 +1,6 @@
 'use strict';
 angular.module('soundgether')
-  .controller('PlaylistCtrl', function ($q, Soundcloud, playlist, ngAudio, Playlist) {
+  .controller('PlaylistCtrl', function ($q, Soundcloud, playlist, ngAudio, Playlist, $scope) {
 
     var vm = this;
 
@@ -80,6 +80,10 @@ angular.module('soundgether')
       };
       xhr.send();
     }
+
+    $scope.$on('trackAdded', function (event, track) {
+      vm.totalDuration += track.track.duration;
+    });
 
     vm.deleteTrack = function (track) {
       Playlist.deleteATrack(vm.playlist, track._id).then(function () {

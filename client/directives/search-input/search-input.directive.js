@@ -7,8 +7,7 @@ angular.module('soundgether')
       scope: {
         context: '@',
         query: '=?',
-        playlist: '=?',
-        duration: '=?'
+        playlist: '=?'
       },
       templateUrl: 'directives/search-input/search-input.html',
       link: function (scope, el) {
@@ -40,8 +39,8 @@ angular.module('soundgether')
         };
 
         scope.addATrack = function () {
-          Playlist.addATrack(scope.playlist, scope.selectedResult.id).then(function () {
-            scope.duration += scope.selectedResult.duration;
+          Playlist.addATrack(scope.playlist, scope.selectedResult.id).then(function (track) {
+            scope.$emit('trackAdded', track);
             scope.query = null;
             scope.selectedResult = null;
           });

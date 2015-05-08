@@ -16,13 +16,14 @@ angular.module('soundgether')
           .then(function (res) {
             var mongoId = res.data._id;
             Soundcloud.getTrack(trackId).then(function (res) {
-              playlist.tracks.push({
+              var newTrack = {
                 _id: mongoId,
                 id: trackId,
                 track: res,
                 audio: ngAudio.load(res.stream_url + '?client_id=' + Soundcloud.getClientId())
-              });
-              def.resolve(playlist.tracks);
+                };
+                playlist.tracks.push(newTrack);
+              def.resolve(newTrack);
             });
           })
           .catch(function (err) {
