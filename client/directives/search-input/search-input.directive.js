@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('soundgether')
-  .directive('searchInput', function (Playlist, Restangular, Soundcloud, $location) {
+  .directive('searchInput', function (Playlist, Restangular, Soundcloud, $location, $timeout) {
     return {
       restrict: 'EA',
       scope: {
@@ -20,15 +20,28 @@ angular.module('soundgether')
         scope.focus = (scope.context === 'home');
 
         scope.search = function (query) {
-          scope.selectedResult = null;
-          if (!query) {
+          if (!query || query.length < 4) {
+            hideTongue();
             scope.results = [];
             return;
           }
-          Soundcloud.search(query).then(function (res) {
-            scope.results = res;
-          });
+          showTongue();
+          searchDebounced(query);
         };
+
+        var searchDebounced = _.debounce(function (query) {
+          doSearch(query);
+        }, 250);
+
+        function doSearch (query) {
+          scope.selectedResult = null;
+          Soundcloud.search(query).then(function (res) {
+            hideTongue();
+            $timeout(function () {
+              scope.results = res;
+            }, 200);
+          });
+        }
 
         scope.createPlaylist = function () {
           var track = Restangular.stripRestangular(scope.selectedResult);
@@ -45,6 +58,25 @@ angular.module('soundgether')
             scope.selectedResult = null;
           });
         };
+
+        /**
+         * Animations
+         */
+        var $tongue = $el.find('.search-input--loader');
+        TweenMax.set($tongue, { opacity: 0, y: 0 });
+
+        function showTongue () {
+          TweenMax.to($tongue, 0.25, { opacity: 1, y: 50 });
+
+        }
+
+        function hideTongue () {
+          TweenMax.to($tongue, 0.25, { opacity: 0, y: 0 });
+        }
+
+        /**
+         * Wonderful waves
+         */
 
         $el.on('keydown', _.throttle(function () { addWave(); }, 400));
         $el.on('click', function () { addWave(true); });

@@ -5,11 +5,13 @@
         <input class="input"
                type="text"
                placeholder="{{ context === 'home' ? 'Add the first track of your playlist...' : 'Add a track!' }}"
-               ng-model-options='{ debounce: 200 }'
                ng-model="query"
                focus-me="focus"
                required
                ng-change="search(query)"/>
+        <div class="search-input--loader">
+          <i class="fa fa-refresh fa-spin"></i>
+        </div>
         <button ng-class="{show: selectedResult}" class="btn btn-primary {{ context }}-create-button" ng-click="context === 'home' ? createPlaylist() : addATrack()">
           <span ng-if="context === 'home'">Create!</span>
           <span ng-if="context === 'playlist'"><i class="fa fa-plus"></i></span>

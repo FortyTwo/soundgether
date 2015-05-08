@@ -7,6 +7,7 @@
     z-index: 10;
     position: relative;
     color: $gray;
+    border-color: transparent;
   }
   button {
     position: absolute;
@@ -30,4 +31,20 @@
   box-shadow: rgba(255, 255, 255, 0.6) 15px 0 0, rgba(255, 255, 255, 0.6) -15px 0 0;
   transform-origin: center center;
   border-radius: 50px;
+}
+
+.search-input--loader {
+  width: 50px;
+  border: 3px solid rgba(0, 0, 0, 0.4);
+  color: rgba(0, 0, 0, 0.8);
+  text-align: center;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  border-bottom-left-radius: 50%;
+  border-bottom-right-radius: 50%;
+  font-size: 25px;
 }
