@@ -138,11 +138,7 @@
 }
 
 .playlist-tracklist-track {
-  background-color: #fff;
-  border-radius: 5px;
-  padding: 10px;
   @include font-size(1.8);
-  margin-bottom: 10px;
   display: flex;
   align-items: center;
   > img {

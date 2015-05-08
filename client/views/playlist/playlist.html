@@ -52,7 +52,7 @@
             </div>
           </div>
         </div>
-        <div class="playlist-tracklist-track" ng-repeat="track in vm.playlist.tracks" ng-show="track.track.title">
+        <div class="panel playlist-tracklist-track" ng-repeat="track in vm.playlist.tracks" ng-show="track.track.title">
           <img ng-src="{{ vm.getArtwork(track.track) }}" />
           <div>{{ track.track.title }} — {{ track.track.duration | prettyTime }}</div>
           <div class="playlist-tracklist-track-play-pause">

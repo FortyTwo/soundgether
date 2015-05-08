@@ -3,7 +3,7 @@
     z-index: 10;
     position: relative;
     color: $gray;
-    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.2);
   }
   button {
     position: absolute;
@@ -12,7 +12,7 @@
     right: 0;
     transition: transform ease .2s;
     &.show {
-      box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.2);
       transform: translateX(110%);
     }
   }
