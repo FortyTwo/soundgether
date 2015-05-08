@@ -52,7 +52,10 @@
           </div>
         <div class="panel playlist-tracklist-track" ng-repeat="track in vm.playlist.tracks" ng-show="track.track.title">
           <img ng-src="{{ vm.getArtwork(track.track) }}" />
-          <div>{{ track.track.title }} — {{ track.track.duration | prettyTime }}</div>
+          <div class="playlist-tracklist-title">{{ track.track.title }}</div>
+          <div class="playlist-tracklist-duration">
+            {{ track.track.duration | prettyTime }}
+          </div>
           <div class="playlist-tracklist-track-play-pause">
             <i ng-click="vm.playPauseTrack(track)" ng-show="!vm.isPlaying(track)" class="fa fa-play"></i>
             <i ng-click="vm.playPauseTrack(track)" ng-show="vm.isPlaying(track)" class="fa fa-pause"></i>

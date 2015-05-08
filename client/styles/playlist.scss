@@ -151,6 +151,20 @@
   }
 }
 
+.playlist-tracklist-duration {
+  margin-left: auto;
+  margin-right: 20px;
+  flex-shrink: 0;
+}
+
+.playlist-tracklist-title {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  padding-right: 20px;
+  max-width: 750px;
+}
+
 .playlist-track-delete {
   position: absolute;
   padding: 3px 10px 3px 15px;
@@ -168,7 +182,7 @@
 }
 
 .playlist-tracklist-track-play-pause {
-  margin-left: auto;
+  flex-shrink: 0;
   > i {
     cursor: pointer;
     float: right;
