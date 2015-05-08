@@ -40,9 +40,9 @@ angular.module('soundgether')
         };
 
         scope.addATrack = function () {
-          Playlist.addATrack(scope.playlist, scope.selectedResult.id).then(function () {
-
-          });
+          Playlist.addATrack(scope.playlist, scope.selectedResult.id);
+          scope.query = null;
+          scope.selectedResult = null;
         };
       }
     };
