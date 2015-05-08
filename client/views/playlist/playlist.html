@@ -44,14 +44,12 @@
   <div class="playlist-tracks">
     <div class="fs-row playlist-tracks-inner">
       <div class="playlist-tracklist fs-cell fs-lg-10">
-        <div class="fs-row">
-          <div class="playlist-header fs-cell fs-all-full">
+          <div class="playlist-header">
             <div class="playlist-title">TRACKLIST</div>
             <div class="playlist-tracklist-search">
               <div search-input="" context="playlist" playlist="vm.playlist" duration="vm.totalDuration"></div>
             </div>
           </div>
-        </div>
         <div class="panel playlist-tracklist-track" ng-repeat="track in vm.playlist.tracks" ng-show="track.track.title">
           <img ng-src="{{ vm.getArtwork(track.track) }}" />
           <div>{{ track.track.title }} — {{ track.track.duration | prettyTime }}</div>
@@ -63,10 +61,8 @@
         </div>
       </div>
       <div class="playlist-infos fs-cell fs-lg-2">
-        <div class="fs-row">
-          <div class="playlist-header fs-cell fs-all-full">
-            <div class="playlist-title">INFOS</div>
-          </div>
+        <div class="playlist-header">
+          <div class="playlist-title">INFOS</div>
         </div>
         <ul class="playlist-infos-list">
           <li>
