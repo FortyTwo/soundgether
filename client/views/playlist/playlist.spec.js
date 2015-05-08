@@ -10,7 +10,10 @@ describe('Controller: PlaylistCtrl', function () {
   beforeEach(inject(function ($controller, $rootScope) {
     scope = $rootScope.$new();
     MainCtrl = $controller('PlaylistCtrl', {
-      $scope: scope
+      $scope: scope,
+      playlist: {
+        tracks: []
+      }
     });
   }));
 
