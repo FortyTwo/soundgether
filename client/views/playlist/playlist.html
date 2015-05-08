@@ -59,6 +59,7 @@
             <i ng-click="vm.playPauseTrack(track)" ng-show="!vm.isPlaying(track)" class="fa fa-play"></i>
             <i ng-click="vm.playPauseTrack(track)" ng-show="vm.isPlaying(track)" class="fa fa-pause"></i>
           </div>
+          <div class="playlist-track-delete" ng-click="vm.deleteTrack(track)"><i class="fa fa-times"></i></div>
         </div>
       </div>
       <div class="playlist-infos fs-cell fs-lg-2">

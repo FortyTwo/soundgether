@@ -104,6 +104,8 @@
 .playlist-tracklist {
   border-right: 1px solid $gray-light;
   padding-right: 2%;
+  position: relative;
+  z-index: 10;
 }
 
 .playlist-header {
@@ -141,9 +143,26 @@
   @include font-size(1.8);
   display: flex;
   align-items: center;
+  position: relative;
   > img {
     margin-right: 20px;
     width: 60px;
+  }
+}
+
+.playlist-track-delete {
+  position: absolute;
+  padding: 3px 10px 3px 15px;
+  background-color: $danger-color;
+  color: white;
+  z-index: -1;
+  top: 5px;
+  right: -10px;
+  transition: all ease .2s;
+  cursor: pointer;
+  border-radius: 3px;
+  &:hover {
+    right: -30px;
   }
 }
 

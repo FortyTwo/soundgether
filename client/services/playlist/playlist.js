@@ -26,6 +26,23 @@ angular.module('soundgether')
             def.reject(err);
           });
         return def.promise;
+      },
+      deleteATrack: function (playlist, trackId) {
+        var def = $q.defer();
+        console.log(trackId);
+        $http.put('/api/playlists/' + playlist._id + '/delete-track', { trackId: trackId })
+          .then(function () {
+            var index = _.findIndex(playlist.tracks, function (item) {
+              return item.track.id === trackId;
+            });
+            console.log(playlist.tracks, index);
+            playlist.tracks.splice(index, 1);
+            def.resolve();
+          })
+          .catch(function (err) {
+            def.reject(err);
+          });
+        return def.promise;
       }
     };
   });

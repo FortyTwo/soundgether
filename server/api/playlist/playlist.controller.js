@@ -76,16 +76,37 @@ exports.update = function (req, res) {
 };
 
 /**
- * Updates an existing Playlist in the DB.
+ * Add a track to a Playlist in the DB.
  *
  * @param req
  * @param res
  */
 exports.addTrack = function (req, res) {
   Playlist.findById(req.params.id).exec(function (err, playlist) {
-    if (err) { return handleError(res, err);   }
+    if (err) { return handleError(res, err); }
     if (!playlist) { return res.status(404).end(); }
     playlist.tracks.push({ id: req.body.trackId });
+    playlist.save(function (err) {
+      if (err) { return handleError(res, err); }
+      return res.status(200).end();
+    });
+  });
+};
+
+/**
+ * Delete a track to a Playlist in the DB.
+ *
+ * @param req
+ * @param res
+ */
+exports.deleteTrack = function (req, res) {
+  Playlist.findById(req.params.id).exec(function (err, playlist) {
+    if (err) { return handleError(res, err); }
+    if (!playlist) { return res.status(404).end(); }
+    var index = _.findIndex(playlist.tracks, function (item) {
+      return item.id === req.body.trackId;
+    });
+    playlist.tracks.splice(index, 1);
     playlist.save(function (err) {
       if (err) { return handleError(res, err); }
       return res.status(200).end();
