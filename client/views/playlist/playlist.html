@@ -43,12 +43,12 @@
 
   <div class="playlist-tracks">
     <div class="fs-row playlist-tracks-inner">
-      <div class="playlist-tracklist fs-cell fs-lg-8">
+      <div class="playlist-tracklist fs-cell fs-lg-10">
         <div class="fs-row">
           <div class="playlist-header fs-cell fs-all-full">
             <div class="playlist-title">TRACKLIST</div>
             <div class="playlist-tracklist-search">
-              <div search-input="" context="playlist" playlist="vm.playlist"></div>
+              <div search-input="" context="playlist" playlist="vm.playlist" duration="vm.totalDuration"></div>
             </div>
           </div>
         </div>
@@ -61,12 +61,22 @@
           </div>
         </div>
       </div>
-      <div class="playlist-infos fs-cell fs-lg-4">
+      <div class="playlist-infos fs-cell fs-lg-2">
         <div class="fs-row">
           <div class="playlist-header fs-cell fs-all-full">
             <div class="playlist-title">INFOS</div>
           </div>
         </div>
+        <ul class="playlist-infos-list">
+          <li>
+            <div class="playlist-infos-value">{{ vm.playlist.tracks.length }}</div>
+            <div class="playlist-infos-title">Number of tracks</div>
+          </li>
+          <li>
+            <div class="playlist-infos-value">{{ vm.totalDuration | prettyTime }}</div>
+            <div class="playlist-infos-title">Total length</div>
+          </li>
+        </ul>
       </div>
     </div>
   </div>

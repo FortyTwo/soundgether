@@ -169,3 +169,28 @@
     padding: 12px 14px 12px 15px;
   }
 }
+
+.playlist-infos {
+  text-align: center;
+  .playlist-header {
+    justify-content: center;
+  }
+}
+
+.playlist-infos-list {
+  @extend .list-unstyled;
+  li {
+    margin-bottom: 40px;
+  }
+}
+
+.playlist-infos-value {
+  @include font-size(4);
+  color: $gray;
+  margin-bottom: 10px;
+}
+
+.playlist-infos-title {
+  @include font-size(2);
+  color: $gray-light;
+}

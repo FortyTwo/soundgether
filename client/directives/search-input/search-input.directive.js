@@ -8,7 +8,8 @@ angular.module('soundgether')
         searchTop: '=?',
         context: '@',
         query: '=?',
-        playlist: '=?'
+        playlist: '=?',
+        duration: '=?'
       },
       templateUrl: 'directives/search-input/search-input.html',
       link: function (scope) {
@@ -32,7 +33,6 @@ angular.module('soundgether')
 
         scope.createPlaylist = function () {
           var track = Restangular.stripRestangular(scope.selectedResult);
-
           Playlist.create(track)
             .then(function (res) {
               $location.path('playlist/' + res._id);
@@ -40,9 +40,11 @@ angular.module('soundgether')
         };
 
         scope.addATrack = function () {
-          Playlist.addATrack(scope.playlist, scope.selectedResult.id);
-          scope.query = null;
-          scope.selectedResult = null;
+          Playlist.addATrack(scope.playlist, scope.selectedResult.id).then(function () {
+            scope.duration += scope.selectedResult.duration;
+            scope.query = null;
+            scope.selectedResult = null;
+          });
         };
       }
     };

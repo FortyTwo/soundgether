@@ -11,9 +11,7 @@ angular.module('soundgether')
         return Restangular.all('playlists').post(data);
       },
       addATrack: function (playlist, trackId) {
-
         var def = $q.defer();
-
         $http.put('/api/playlists/' + playlist._id + '/add-track', { trackId: trackId })
           .then(function () {
             Soundcloud.getTrack(trackId).then(function (res) {
@@ -21,6 +19,7 @@ angular.module('soundgether')
                 track: res,
                 audio: ngAudio.load(res.stream_url + '?client_id=' + Soundcloud.getClientId())
               });
+              def.resolve(playlist.tracks);
             });
           })
           .catch(function (err) {

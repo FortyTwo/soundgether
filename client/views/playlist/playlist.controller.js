@@ -7,10 +7,12 @@ angular.module('soundgether')
     vm.playlist = playlist;
     vm.getArtwork = Soundcloud.getArtwork;
     vm.currentTrack = {};
+    vm.totalDuration = 0;
 
     function retrieveTracks () {
       var promises = vm.playlist.tracks.map(function (value) {
         return Soundcloud.getTrack(value.id).then(function (res) {
+          vm.totalDuration += res.duration;
           _.assign(value, {
             track: res,
             audio: ngAudio.load(res.stream_url + '?client_id=' + Soundcloud.getClientId())
