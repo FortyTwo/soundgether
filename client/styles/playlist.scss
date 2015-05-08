@@ -90,9 +90,15 @@
 }
 
 .playlist-tracks {
-  min-height: 300px;
+  min-height: 500px;
   background-color: $gray-lighter;
   padding: 30px 0;
+  flex: 1 1 auto;
+  display: flex;
+}
+
+.playlist-tracks-inner {
+  display: flex;
 }
 
 .playlist-tracklist {
@@ -100,15 +106,14 @@
   padding-right: 2%;
 }
 
-.playlist-tracklist-header {
+.playlist-header {
   display: flex;
   align-items: center;
   padding: 10px 0;
   margin-bottom: 20px;
 }
 
-.playlist-tracklist-title,
-.playlist-infos-title {
+.playlist-title {
   @include font-size(2.5);
   color: $gray;
 }

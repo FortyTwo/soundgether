@@ -24,9 +24,9 @@
     <!-- endbuild -->
 
   </head>
-  <body class="fs-grid">
+  <body>
 
-    <div ng-view=""></div>
+    <div ng-view="" class="fs-grid content"></div>
 
     <script src="socket.io/socket.io.js"></script>
 
@@ -47,26 +47,26 @@
 
       <!-- inject:js -->
       <script src="app.js"></script>
-      <script src="directives/back-img/back-img.directive.js"></script>
       <script src="directives/focus-me/focus-me.directive.js"></script>
-      <script src="directives/footer/footer.directive.js"></script>
       <script src="directives/navbar/navbar.directive.js"></script>
-      <script src="directives/search-input/search-input.directive.js"></script>
+      <script src="directives/footer/footer.directive.js"></script>
+      <script src="directives/back-img/back-img.directive.js"></script>
       <script src="directives/search-results/search-results.directive.js"></script>
+      <script src="directives/search-input/search-input.directive.js"></script>
       <script src="filters/pretty-time/pretty-time.js"></script>
-      <script src="services/auth/auth.js"></script>
-      <script src="services/playlist/playlist.js"></script>
       <script src="services/socket/socket.mock.js"></script>
       <script src="services/socket/socket.service.js"></script>
+      <script src="services/auth/auth.js"></script>
       <script src="services/soundcloud/soundcloud.js"></script>
+      <script src="services/playlist/playlist.js"></script>
+      <script src="views/signup/signup.controller.js"></script>
+      <script src="views/signup/signup.js"></script>
+      <script src="views/playlist/playlist.controller.js"></script>
+      <script src="views/playlist/playlist.js"></script>
       <script src="views/home/home.controller.js"></script>
       <script src="views/home/home.js"></script>
       <script src="views/login/login.controller.js"></script>
       <script src="views/login/login.js"></script>
-      <script src="views/playlist/playlist.controller.js"></script>
-      <script src="views/playlist/playlist.js"></script>
-      <script src="views/signup/signup.controller.js"></script>
-      <script src="views/signup/signup.js"></script>
       <!-- endinject -->
     <!-- endbuild -->
 

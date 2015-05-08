@@ -23,13 +23,14 @@ $gray-lighter:           lighten($gray-base, 93.5%); // #eee
 //::selection      { background: transparent; }
 
 html {
+  height: 100%;
   font-size: 62.5%;
 }
 
 body {
+  height: 100%;
   @include font-size();
   font-family: sans-serif;
-  height: 100%;
 }
 
 ul {
@@ -42,4 +43,17 @@ a {
   &:hover {
     color: darken($primary-color, 20%);
   }
+}
+
+.content {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-flow: column;
+  height: 100%;
 }
