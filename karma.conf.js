@@ -33,6 +33,8 @@ module.exports = function (config) {
       'bower_components/lodash/lodash.js',
       'bower_components/angular-audio/app/angular.audio.js',
       'bower_components/moment/moment.js',
+      'bower_components/jquery/dist/jquery.js',
+      'bower_components/gsap/src/uncompressed/TweenMax.js',
       'app.js',
       'views/**/*.js',
       'services/**/*.js',

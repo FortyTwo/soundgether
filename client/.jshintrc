@@ -2,6 +2,8 @@
   "browser": true,
   "globals": {
     "angular": true,
+    "TweenMax": true,
+    "TimelineMax": true,
     "browser": true,
     "element": true,
     "by": true,

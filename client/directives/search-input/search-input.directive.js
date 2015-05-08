@@ -11,7 +11,9 @@ angular.module('soundgether')
         duration: '=?'
       },
       templateUrl: 'directives/search-input/search-input.html',
-      link: function (scope) {
+      link: function (scope, el) {
+
+        var $el = $(el);
 
         scope.query = null;
         scope.results = null;
@@ -44,6 +46,34 @@ angular.module('soundgether')
             scope.selectedResult = null;
           });
         };
+
+        $el.on('keydown', _.throttle(function () { addWave(); }, 400));
+        $el.on('click', function () { addWave(true); });
+
+        addWave();
+
+        function addWave (rotate) {
+
+          var wave = document.createElement('div');
+          wave.classList.add('search-input--wave');
+          TweenMax.set(wave, { opacity: 1, scaleX: 1, scaleY: 1 });
+
+          $el.prepend(wave);
+          TweenMax.to(wave, 1, { opacity: 0, scaleX: 1.5, scaleY: 2 });
+
+          setTimeout(function () {
+            $(wave).remove();
+          }, 1e3);
+
+          if (rotate) {
+            new TimelineMax()
+              .to(el, 0.1, { rotation: 1 })
+              .to(el, 0.1, { rotation: -1 })
+              .to(el, 0.1, { rotation: 0 });
+          }
+
+        }
+
       }
     };
   });

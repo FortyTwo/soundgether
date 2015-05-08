@@ -13,7 +13,8 @@
     "lodash": "~3.3.0",
     "WaveformGenerator.js": "enjikaka/WaveformGenerator.js",
     "normalize.css": "~3.0.3",
-    "formstone": "~0.5.9"
+    "formstone": "~0.5.9",
+    "gsap": "~1.16.1"
   },
   "overrides": {
     "formstone": {
