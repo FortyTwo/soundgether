@@ -82,7 +82,7 @@ angular.module('soundgether')
     }
 
     vm.deleteTrack = function (track) {
-      Playlist.deleteATrack(vm.playlist, track.track.id).then(function () {
+      Playlist.deleteATrack(vm.playlist, track._id).then(function () {
         vm.totalDuration -= track.track.duration;
       });
     };

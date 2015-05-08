@@ -86,9 +86,9 @@ exports.addTrack = function (req, res) {
     if (err) { return handleError(res, err); }
     if (!playlist) { return res.status(404).end(); }
     playlist.tracks.push({ id: req.body.trackId });
-    playlist.save(function (err) {
+    playlist.save(function (err, playlist) {
       if (err) { return handleError(res, err); }
-      return res.status(200).end();
+      return res.status(200).json(_.last(playlist.tracks));
     });
   });
 };
@@ -104,7 +104,7 @@ exports.deleteTrack = function (req, res) {
     if (err) { return handleError(res, err); }
     if (!playlist) { return res.status(404).end(); }
     var index = _.findIndex(playlist.tracks, function (item) {
-      return item.id === req.body.trackId;
+      return item._id === req.body.mongoId;
     });
     playlist.tracks.splice(index, 1);
     playlist.save(function (err) {

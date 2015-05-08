@@ -11,8 +11,8 @@ router.post('/', controller.create);
 
 router.put('/:id', controller.update);
 router.put('/:id/add-track', controller.addTrack);
-router.put('/:id/delete-track', controller.deleteTrack);
 
+router.delete('/:id/track', controller.deleteTrack);
 router.delete('/:id', controller.destroy);
 
 module.exports = router;

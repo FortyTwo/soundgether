@@ -13,9 +13,12 @@ angular.module('soundgether')
       addATrack: function (playlist, trackId) {
         var def = $q.defer();
         $http.put('/api/playlists/' + playlist._id + '/add-track', { trackId: trackId })
-          .then(function () {
+          .then(function (res) {
+            var mongoId = res.data._id;
             Soundcloud.getTrack(trackId).then(function (res) {
               playlist.tracks.push({
+                _id: mongoId,
+                id: trackId,
                 track: res,
                 audio: ngAudio.load(res.stream_url + '?client_id=' + Soundcloud.getClientId())
               });
@@ -27,15 +30,13 @@ angular.module('soundgether')
           });
         return def.promise;
       },
-      deleteATrack: function (playlist, trackId) {
+      deleteATrack: function (playlist, mongoId) {
         var def = $q.defer();
-        console.log(trackId);
-        $http.put('/api/playlists/' + playlist._id + '/delete-track', { trackId: trackId })
+        $http.delete('/api/playlists/' + playlist._id + '/track', { mongoId: mongoId })
           .then(function () {
             var index = _.findIndex(playlist.tracks, function (item) {
-              return item.track.id === trackId;
+              return item.track._id === mongoId;
             });
-            console.log(playlist.tracks, index);
             playlist.tracks.splice(index, 1);
             def.resolve();
           })
