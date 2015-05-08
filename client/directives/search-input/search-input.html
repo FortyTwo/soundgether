@@ -5,8 +5,6 @@
         <input class="input"
                type="text"
                placeholder="{{ context === 'home' ? 'Add the first track of your playlist...' : 'Add a track!' }}"
-               ng-focus="searchTop = true"
-               ng-blur="searchTop = false"
                ng-model-options='{ debounce: 200 }'
                ng-model="query"
                focus-me="focus"

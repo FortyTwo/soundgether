@@ -5,7 +5,6 @@ angular.module('soundgether')
     return {
       restrict: 'EA',
       scope: {
-        searchTop: '=?',
         context: '@',
         query: '=?',
         playlist: '=?',
@@ -16,7 +15,6 @@ angular.module('soundgether')
 
         scope.query = null;
         scope.results = null;
-        scope.searchTop = false;
         scope.selectedResult = null;
         scope.focus = (scope.context === 'home');
 

@@ -33,19 +33,11 @@
   }
 }
 
-$home-transition-delay: 250ms;
-
 .home-centered {
   position: absolute;
   left: 50%;
   top: 50%;
-  transition: all ease 0.5s;
-  transition-delay: $home-transition-delay;
   transform: translate(-50%, -50%);
-}
-
-.home-centered-top {
-  transform: translate(-50%, -100%);
 }
 
 .home-welcome-text {
@@ -100,22 +92,9 @@ $home-transition-delay: 250ms;
 
 .home-description {
   text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.3);
-  transition: all ease 0.5s;
-  transition-delay: $home-transition-delay;
   text-align: center;
   font-size: 30px;
   color: $primary-color;
-  position: absolute;
-  visibility: hidden;
-  opacity: 0;
-  top: 50%;
-  left: 50%;
   width: 100%;
-  transform: translate(-50%, 50%);
-}
-
-.home-description-showed {
-  visibility: visible;
-  opacity: 1;
-  transform: translate(-50%, 500%);
+  margin-top: 50px;
 }
