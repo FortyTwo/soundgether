@@ -33,7 +33,7 @@ angular.module('soundgether')
       },
       deleteATrack: function (playlist, mongoId) {
         var def = $q.defer();
-        $http.delete('/api/playlists/' + playlist._id + '/track', { mongoId: mongoId })
+        $http.delete('/api/playlists/' + playlist._id + '/track/' + mongoId)
           .then(function () {
             var index = _.findIndex(playlist.tracks, function (item) {
               return item._id === mongoId;

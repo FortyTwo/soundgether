@@ -104,7 +104,7 @@ exports.deleteTrack = function (req, res) {
     if (err) { return handleError(res, err); }
     if (!playlist) { return res.status(404).end(); }
     var index = _.findIndex(playlist.tracks, function (item) {
-      return item._id === req.body.mongoId;
+      return item._id.toString() === req.params.mongoId;
     });
     playlist.tracks.splice(index, 1);
     playlist.save(function (err) {

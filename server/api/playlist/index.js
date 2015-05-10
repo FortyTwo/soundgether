@@ -12,7 +12,7 @@ router.post('/', controller.create);
 router.put('/:id', controller.update);
 router.put('/:id/add-track', controller.addTrack);
 
-router.delete('/:id/track', controller.deleteTrack);
+router.delete('/:id/track/:mongoId', controller.deleteTrack);
 router.delete('/:id', controller.destroy);
 
 module.exports = router;
