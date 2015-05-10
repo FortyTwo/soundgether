@@ -1,10 +1,3 @@
-@mixin blur($value) {
-  -webkit-filter: blur($value);
-  -ms-filter: blur($value);
-  -o-filter: blur($value);
-  filter: blur($value);
-}
-
 @mixin font-size($sizeValue: 1.6) {
   font-size: ($sizeValue * 10) + px;
   font-size: $sizeValue + rem;

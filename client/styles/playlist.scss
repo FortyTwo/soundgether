@@ -13,8 +13,9 @@
   left: -200px;
   right: -200px;
   bottom: -200px;
-  transform: scale(1.1);
-  @include blur(50px);
+  transform: scale(1.2) translate3d(0, 0, 0);
+  -webkit-filter: blur(50px);
+  transition: all ease 1s;
 }
 
 #waveform {
