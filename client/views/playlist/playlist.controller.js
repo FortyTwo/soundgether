@@ -29,13 +29,16 @@ angular.module('soundgether')
 
     vm.playPauseTrack = function (track) {
       if (track !== vm.currentTrack) {
-        vm.currentTrack.audio.stop();
+        vm.currentTrack.audio.pause();
+        vm.currentTrack.isPlaying = false;
         drawWaveform(track);
+        vm.currentTrack = track;
       }
-      vm.currentTrack = track;
       if (vm.isPlaying(track)) {
+        track.isPlaying = false;
         vm.currentTrack.audio.pause();
       } else {
+        track.isPlaying = true;
         vm.currentTrack.audio.play();
       }
     };
@@ -54,8 +57,10 @@ angular.module('soundgether')
       });
       if (index < vm.playlist.tracks.length - 1) {
         vm.currentTrack.audio.pause();
+        vm.currentTrack.isPlaying = false;
         vm.currentTrack = vm.playlist.tracks[index + 1];
         vm.currentTrack.audio.play();
+        vm.currentTrack.isPlaying = true;
         drawWaveform(vm.currentTrack);
       }
     };
@@ -66,18 +71,16 @@ angular.module('soundgether')
       });
       if (index > 0) {
         vm.currentTrack.audio.pause();
+        vm.currentTrack.isPlaying = false;
         vm.currentTrack = vm.playlist.tracks[index - 1];
         vm.currentTrack.audio.play();
+        vm.currentTrack.isPlaying = true;
         drawWaveform(vm.currentTrack);
       }
     };
 
     vm.isPlaying = function (track) {
-      if (track && track.audio && track.audio.audio) {
-        return !track.audio.audio.paused;
-      } else {
-        return false;
-      }
+      return !!track.isPlaying;
     };
 
     vm.getCurrentTime = function (track) {
