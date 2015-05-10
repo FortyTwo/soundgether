@@ -1,6 +1,6 @@
 'use strict';
 angular.module('soundgether')
-  .controller('PlaylistCtrl', function ($q, Soundcloud, playlist, ngAudio, Playlist, $scope, $interval) {
+  .controller('PlaylistCtrl', function ($q, Soundcloud, playlist, ngAudio, Playlist, $scope, $interval, $timeout) {
 
     var vm = this;
 
@@ -66,8 +66,8 @@ angular.module('soundgether')
           new WaveformGenerator(this.response, {
             bar: {
               align: 'center',
-              width: 4,
-              gap: 0.2
+              width: 3,
+              gap: 0.1
             }
           })
             .then(function (svg) {
@@ -101,7 +101,13 @@ angular.module('soundgether')
       var totalLength = $container.width();
       var seekToPercentage = length * 100 / totalLength;
       track.audio.currentTime = seekToPercentage * track.track.duration / 1000 / 100;
+      var $paths = $('#waveform').find('path');
+      $paths.css('transition', 'none');
       showCurrentDuration();
+      // TODO handle it in a better way
+      $timeout(function () {
+        $paths.css('transition', 'stroke ease 1s');
+      }, 200);
     };
 
     $scope.$on('trackAdded', function (event, track) {

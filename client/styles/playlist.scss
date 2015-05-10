@@ -19,6 +19,9 @@
 
 #waveform {
   cursor: pointer;
+  path {
+    transition: stroke ease 1s;
+  }
   path[data-played=true] {
     stroke: $primary-color;
   }
