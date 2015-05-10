@@ -81,6 +81,7 @@
   user-select: none;
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
   font-size: 30px;
+  display: flex;
   button {
     background: none;
     border: 0;
@@ -93,18 +94,19 @@
     cursor: pointer;
     vertical-align: middle;
   }
+  button + button {
+    margin-left: 15px;
+  }
   > .playlist-play-pause i {
-    font-size: 40px;
-    display: inline-block;
+    @include font-size(4);
+    width: 70px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border: 1px solid white;
     box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
     border-radius: 100px;
-  }
-  .fa-play {
-    padding: 12px 14px 12px 21px;
-  }
-  .fa-pause {
-    padding: 12px 15px 12px 17px;
   }
 }
 
@@ -202,20 +204,19 @@
 
 .playlist-tracklist-track-play-pause {
   flex-shrink: 0;
-  > i {
+  button {
+    outline: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
-    float: right;
     color: #fff;
     background-color: $primary-color;
-    font-size: 30px;
+    @include font-size(3);
     border: 1px solid $primary-color;
     border-radius: 100px;
-  }
-  .fa-play {
-    padding: 12px 12px 12px 19px;
-  }
-  .fa-pause {
-    padding: 12px 14px 12px 15px;
+    height: 52px;
+    width: 52px;
   }
 }
 

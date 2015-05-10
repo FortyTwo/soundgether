@@ -23,8 +23,8 @@
           <div class="playlist-controls">
             <button ng-disabled="vm.isFirstTrack(vm.currentTrack)" ng-click="vm.previousTrack(vm.currentTrack)"><i class="fa fa-backward"></i></button>
             <button class="playlist-play-pause">
-              <i ng-show="!vm.isPlaying(vm.currentTrack)" ng-click="vm.playPauseTrack(vm.currentTrack)" class="fa fa-play"></i>
-              <i ng-show="vm.isPlaying(vm.currentTrack)" ng-click="vm.playPauseTrack(vm.currentTrack)" class="fa fa-pause"></i>
+              <i ng-show="!vm.isPlaying(vm.currentTrack)" ng-click="vm.playPauseTrack(vm.currentTrack)" class="fa fa-play fa-fw"></i>
+              <i ng-show="vm.isPlaying(vm.currentTrack)" ng-click="vm.playPauseTrack(vm.currentTrack)" class="fa fa-pause fa-fw"></i>
             </button>
             <button ng-disabled="vm.isLastTrack(vm.currentTrack)" ng-click="vm.nextTrack(vm.currentTrack)"><i class="fa fa-forward"></i></button>
           </div>
@@ -58,8 +58,10 @@
               {{ track.track.duration | prettyTime }}
             </div>
             <div class="playlist-tracklist-track-play-pause">
-              <i ng-click="vm.playPauseTrack(track)" ng-show="!vm.isPlaying(track)" class="fa fa-play"></i>
-              <i ng-click="vm.playPauseTrack(track)" ng-show="vm.isPlaying(track)" class="fa fa-pause"></i>
+              <button>
+                <i ng-click="vm.playPauseTrack(track)" ng-show="!vm.isPlaying(track)" class="fa fa-play"></i>
+                <i ng-click="vm.playPauseTrack(track)" ng-show="vm.isPlaying(track)" class="fa fa-pause"></i>
+              </button>
             </div>
             <div class="playlist-track-delete" ng-click="vm.deleteTrack(track)"><i class="fa fa-times"></i></div>
           </div>
