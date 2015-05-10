@@ -173,6 +173,14 @@
   }
 }
 
+.playlist-track-index {
+  position: absolute;
+  left: -20px;
+  bottom: 0;
+  color: #bbb;
+  @include font-size(2.5);
+}
+
 .playlist-tracklist-duration {
   margin-left: auto;
   margin-right: 20px;

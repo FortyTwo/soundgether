@@ -51,6 +51,7 @@
           </div>
         <div class="fancy-slide" ng-repeat="track in vm.playlist.tracks">
           <div class="panel playlist-tracklist-track">
+            <div class="playlist-track-index">{{ $index }}</div>
             <img ng-src="{{ vm.getArtwork(track.track) }}" />
             <div class="playlist-tracklist-title">{{ track.track.title }}</div>
             <div class="playlist-tracklist-duration">
