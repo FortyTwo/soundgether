@@ -1,6 +1,6 @@
 'use strict';
 angular.module('soundgether')
-  .controller('PlaylistCtrl', function ($q, Soundcloud, playlist, ngAudio, Playlist, $scope) {
+  .controller('PlaylistCtrl', function ($q, Soundcloud, playlist, ngAudio, Playlist, $scope, $interval) {
 
     var vm = this;
 
@@ -68,18 +68,41 @@ angular.module('soundgether')
               align: 'center',
               width: 4,
               gap: 0.2
-            },
-            waveform: {
-              color: '#fbc02d'
             }
           })
             .then(function (svg) {
-              $('#wave').html(svg);
+              $('#waveform').html(svg);
             });
         }
       };
       xhr.send();
     }
+
+    function showCurrentDuration () {
+      var $paths = $('#waveform').find('path');
+      var totalLength = $paths.length;
+      var currentLength = vm.currentTrack.audio.currentTime * 100 / vm.currentTrack.track.duration * 1000;
+      $paths.each(function (index) {
+        if (index * 100 / totalLength < currentLength) {
+          $(this).attr('data-played', true);
+        } else {
+          $(this).attr('data-played', false);
+        }
+      });
+    }
+
+    $interval(function () {
+      showCurrentDuration();
+    }, 1000);
+
+    vm.seekTo = function (e, track) {
+      var $container = $(e.target).parent();
+      var length = e.offsetX;
+      var totalLength = $container.width();
+      var seekToPercentage = length * 100 / totalLength;
+      track.audio.currentTime = seekToPercentage * track.track.duration / 1000 / 100;
+      showCurrentDuration();
+    };
 
     $scope.$on('trackAdded', function (event, track) {
       vm.totalDuration += track.track.duration;

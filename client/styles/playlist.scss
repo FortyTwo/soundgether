@@ -17,6 +17,17 @@
   @include blur(50px);
 }
 
+#waveform {
+  cursor: pointer;
+  path[data-played=true] {
+    stroke: $primary-color;
+  }
+  path,
+  path[data-played=false] {
+    stroke: #ccc;
+  }
+}
+
 .playlist-current-track-sound {
   height: 100%;
 }
