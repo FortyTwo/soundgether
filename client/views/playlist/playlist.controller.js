@@ -40,6 +40,38 @@ angular.module('soundgether')
       }
     };
 
+    vm.isFirstTrack = function (track) {
+      return track === vm.playlist.tracks[0];
+    };
+
+    vm.isLastTrack = function (track) {
+      return track === _.last(vm.playlist.tracks);
+    };
+
+    vm.nextTrack = function (track) {
+      var index = _.findIndex(vm.playlist.tracks, function (item) {
+        return item._id === track._id;
+      });
+      if (index < vm.playlist.tracks.length - 1) {
+        vm.currentTrack.audio.pause();
+        vm.currentTrack = vm.playlist.tracks[index + 1];
+        vm.currentTrack.audio.play();
+        drawWaveform(vm.currentTrack);
+      }
+    };
+
+    vm.previousTrack = function (track) {
+      var index = _.findIndex(vm.playlist.tracks, function (item) {
+        return item._id === track._id;
+      });
+      if (index > 0) {
+        vm.currentTrack.audio.pause();
+        vm.currentTrack = vm.playlist.tracks[index - 1];
+        vm.currentTrack.audio.play();
+        drawWaveform(vm.currentTrack);
+      }
+    };
+
     vm.isPlaying = function (track) {
       if (track && track.audio && track.audio.audio) {
         return !track.audio.audio.paused;

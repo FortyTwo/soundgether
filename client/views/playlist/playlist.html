@@ -21,12 +21,12 @@
       <div class="fs-row">
         <div class="fs-cell fs-all-full playlist-current-track-inner">
           <div class="playlist-controls">
-            <span><i class="fa fa-backward"></i></span>
-            <span class="playlist-play-pause">
+            <button ng-disabled="vm.isFirstTrack(vm.currentTrack)" ng-click="vm.previousTrack(vm.currentTrack)"><i class="fa fa-backward"></i></button>
+            <button class="playlist-play-pause">
               <i ng-show="!vm.isPlaying(vm.currentTrack)" ng-click="vm.playPauseTrack(vm.currentTrack)" class="fa fa-play"></i>
               <i ng-show="vm.isPlaying(vm.currentTrack)" ng-click="vm.playPauseTrack(vm.currentTrack)" class="fa fa-pause"></i>
-            </span>
-            <span><i class="fa fa-forward"></i></span>
+            </button>
+            <button ng-disabled="vm.isLastTrack(vm.currentTrack)" ng-click="vm.nextTrack(vm.currentTrack)"><i class="fa fa-forward"></i></button>
           </div>
           <div class="playlist-current-track-infos">
             <div class="playlist-current-track-title">

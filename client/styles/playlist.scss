@@ -81,12 +81,17 @@
   user-select: none;
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
   font-size: 30px;
+  button {
+    background: none;
+    border: 0;
+    outline: 0;
+    &[disabled=disabled] {
+      opacity: 0.6;
+    }
+  }
   i {
     cursor: pointer;
     vertical-align: middle;
-  }
-  span + span {
-    margin-left: 20px;
   }
   > .playlist-play-pause i {
     font-size: 40px;
