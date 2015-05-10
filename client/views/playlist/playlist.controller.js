@@ -125,6 +125,9 @@ angular.module('soundgether')
 
     $interval(function () {
       showCurrentDuration();
+      if (vm.currentTrack.audio.remaining === 0) {
+        vm.nextTrack(vm.currentTrack);
+      }
     }, 1000);
 
     vm.seekTo = function (e, track) {
