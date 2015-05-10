@@ -116,7 +116,7 @@ angular.module('soundgether')
     function showCurrentDuration () {
       var $paths = $('#waveform').find('path');
       var totalLength = $paths.length;
-      var currentLength = vm.currentTrack.audio.currentTime * 100 / vm.currentTrack.track.duration * 1000;
+      var currentLength = vm.currentTrack.audio.progress * 100;
       $paths.each(function (index) {
         if (index * 100 / totalLength < currentLength) {
           $(this).attr('data-played', true);
@@ -137,15 +137,14 @@ angular.module('soundgether')
       var $container = $(e.target).parent();
       var length = e.offsetX;
       var totalLength = $container.width();
-      var seekToPercentage = length * 100 / totalLength;
-      track.audio.currentTime = seekToPercentage * track.track.duration / 1000 / 100;
+      track.audio.progress = length / totalLength;
       var $paths = $('#waveform').find('path');
       $paths.css('transition', 'none');
       showCurrentDuration();
       // TODO handle it in a better way
       $timeout(function () {
         $paths.css('transition', 'stroke ease 1s');
-      }, 200);
+      }, 500);
     };
 
     $scope.$on('trackAdded', function (event, track) {
